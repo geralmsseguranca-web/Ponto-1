@@ -2,318 +2,115 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Ponto Online | Gestão de Colaboradores + Posto de Serviço</title>
-    <!-- Google Fonts + Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponto Online | Login + Abas (Admin/Colaborador)</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #eef2fa 0%, #dde5f0 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
-
-        .main-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: white;
-            border-radius: 2rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .card-header {
-            background: #0a2b3e;
-            padding: 1.2rem 2rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .card-header h2 {
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
-        .card-header i {
-            font-size: 1.6rem;
-            color: #ffc857;
-        }
-
-        .card-body {
-            padding: 1.8rem;
-        }
-
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 1.8rem;
-        }
-
-        @media (max-width: 900px) {
-            .two-columns {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        label {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 6px;
-            color: #1e4663;
-            font-size: 0.85rem;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 40px;
-            border: 1.5px solid #cbdde9;
-            background: white;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: #2c7da0;
-            box-shadow: 0 0 0 3px rgba(44,125,160,0.2);
-        }
-
-        button {
-            background: #2c7da0;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-        }
-
-        button:hover {
-            background: #1f5e7e;
-            transform: scale(0.98);
-        }
-
-        .btn-danger {
-            background: #bc4e2c;
-        }
-        .btn-danger:hover {
-            background: #9a3b1f;
-        }
-
-        .btn-sm {
-            padding: 6px 14px;
-            font-size: 0.8rem;
-        }
-
-        .lista-colab {
-            margin-top: 1.5rem;
-            max-height: 350px;
-            overflow-y: auto;
-            border-radius: 1rem;
-            border: 1px solid #e9f0f5;
-        }
-
-        .colab-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 18px;
-            border-bottom: 1px solid #ecf3f9;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .colab-info {
-            display: flex;
-            gap: 12px;
-            align-items: baseline;
-            flex-wrap: wrap;
-        }
-        .colab-nome {
-            font-weight: 700;
-            background: #eef2fa;
-            padding: 4px 12px;
-            border-radius: 60px;
-        }
-        .colab-posto {
-            background: #fef3e2;
-            padding: 4px 12px;
-            border-radius: 60px;
-            color: #b45f06;
-            font-size: 0.8rem;
-        }
-        .empty-msg {
-            text-align: center;
-            padding: 2rem;
-            color: #6c86a3;
-        }
-        .ponto-buttons {
-            display: flex;
-            gap: 1.5rem;
-            margin: 1.5rem 0 1rem;
-            flex-wrap: wrap;
-        }
-        .btn-entrada {
-            background: #2b9348;
-            flex: 1;
-            justify-content: center;
-            padding: 14px;
-            font-size: 1.1rem;
-        }
-        .btn-saida {
-            background: #e85d04;
-            flex: 1;
-            justify-content: center;
-            padding: 14px;
-            font-size: 1.1rem;
-        }
-        .selected-info {
-            background: #f0f6fe;
-            padding: 12px 18px;
-            border-radius: 28px;
-            margin-top: 12px;
-            font-size: 0.9rem;
-        }
-        .historico {
-            margin-top: 1.8rem;
-            border-top: 2px dashed #cde1ef;
-            padding-top: 1.2rem;
-        }
-        .lista-pontos {
-            max-height: 350px;
-            overflow-y: auto;
-        }
-        .ponto-item {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #eef2f8;
-            padding: 12px 8px;
-            flex-wrap: wrap;
-        }
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1e293b;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 60px;
-            z-index: 1000;
-            font-weight: 500;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            animation: fadeUp 0.2s ease;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px);}
-            to { opacity: 1; transform: translateX(-50%) translateY(0);}
-        }
-        footer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #5f7f9e;
-            margin-top: 1rem;
-        }
-        i.fa, i.far, i.fas {
-            margin-right: 4px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: linear-gradient(135deg, #eef2fa 0%, #d9e2ef 100%); min-height: 100vh; padding: 2rem 1rem; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        /* Login */
+        .login-box { background: white; border-radius: 2rem; max-width: 500px; margin: 5rem auto; padding: 2rem; box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
+        .login-box h2 { margin-bottom: 1.5rem; text-align: center; color: #0a2b3e; }
+        .input-group { margin-bottom: 1rem; }
+        input { width: 100%; padding: 12px; border-radius: 60px; border: 1.5px solid #cbdde9; }
+        button { background: #2c7da0; color: white; border: none; padding: 12px; border-radius: 60px; width: 100%; font-weight: bold; cursor: pointer; }
+        .error { color: #b33b2c; margin-top: 1rem; text-align: center; }
+        /* Abas */
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .tab-btn { background: #e2e8f0; color: #1e4663; padding: 10px 24px; border-radius: 60px; width: auto; }
+        .tab-btn.active { background: #0a2b3e; color: white; }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        /* Cards */
+        .card { background: white; border-radius: 1.5rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .btn-entrada { background: #2b9348; }
+        .btn-saida { background: #e85d04; }
+        .btn-danger { background: #bc4e2c; }
+        .btn-sm { padding: 6px 12px; font-size: 0.8rem; width: auto; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .lista { max-height: 400px; overflow-y: auto; margin-top: 1rem; }
+        .item { padding: 10px; border-bottom: 1px solid #eef2f8; }
+        .badge { padding: 2px 10px; border-radius: 40px; font-size: 0.75rem; }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1e293b; color: white; padding: 12px 24px; border-radius: 60px; z-index: 1000; }
+        .logout-btn { background: #64748b; margin-top: 1rem; padding: 8px; font-size: 0.8rem; }
+        @media (max-width: 700px) { .tab-btn { flex: 1; text-align: center; } }
     </style>
 </head>
 <body>
-<div class="main-container">
-    <!-- Card: Gerenciamento de Colaboradores -->
-    <div class="card">
-        <div class="card-header">
-            <i class="fas fa-database"></i>
-            <h2>Banco de Colaboradores • Posto de Serviço</h2>
-        </div>
-        <div class="card-body">
-            <div class="two-columns">
-                <!-- Formulário adicionar -->
-                <div>
-                    <h3 style="margin-bottom: 1rem;"><i class="fas fa-user-plus"></i> Adicionar Colaborador</h3>
-                    <div class="form-group">
-                        <label><i class="fas fa-user"></i> Nome completo</label>
-                        <input type="text" id="novoNome" placeholder="Ex: Maria da Silva">
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-briefcase"></i> Posto / Serviço</label>
-                        <input type="text" id="novoPosto" placeholder="Ex: Enfermeiro, Vigia, Administrativo">
-                    </div>
-                    <button id="btnAddColaborador"><i class="fas fa-save"></i> Salvar Colaborador</button>
-                </div>
-                <!-- Lista + exclusão -->
-                <div>
-                    <h3 style="margin-bottom: 1rem;"><i class="fas fa-users"></i> Colaboradores cadastrados</h3>
-                    <div class="lista-colab" id="listaColabContainer">
-                        <div class="empty-msg">Carregando colaboradores...</div>
-                    </div>
-                    <p class="selected-info" id="infoSelecionado"><i class="fas fa-info-circle"></i> Nenhum colaborador selecionado para ponto.</p>
-                </div>
+<div class="container" id="app">
+    <!-- Tela de login -->
+    <div id="loginScreen">
+        <div class="login-box">
+            <h2><i class="fas fa-clock"></i> Controle de Ponto</h2>
+            <div class="input-group">
+                <input type="email" id="loginEmail" placeholder="E-mail">
             </div>
+            <div class="input-group">
+                <input type="password" id="loginSenha" placeholder="Senha">
+            </div>
+            <button id="btnLogin"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+            <div id="loginError" class="error"></div>
         </div>
     </div>
 
-    <!-- Card: Registro de Ponto -->
-    <div class="card">
-        <div class="card-header">
-            <i class="fas fa-fingerprint"></i>
-            <h2>Registrar Ponto • Entrada / Saída</h2>
+    <!-- Sistema logado -->
+    <div id="systemScreen" style="display: none;">
+        <div class="card" style="background: #0a2b3e; color: white; margin-bottom: 1rem;">
+            <div class="flex-between">
+                <div><i class="fas fa-user-circle"></i> <span id="userName"></span> (<span id="userRole"></span>)</div>
+                <button id="btnLogout" class="logout-btn" style="background:#e2e8f0; color:#1e4663;"><i class="fas fa-sign-out-alt"></i> Sair</button>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label><i class="fas fa-address-card"></i> Selecione o colaborador</label>
-                <select id="selectColaborador">
-                    <option value="">-- Escolha um colaborador --</option>
-                </select>
-            </div>
-            <div id="postoPreview" class="selected-info" style="background:#faf5e8;"><i class="fas fa-tag"></i> Posto de serviço: <span id="postoSelecionado">—</span></div>
-            
-            <div class="ponto-buttons">
-                <button id="btnRegistrarEntrada" class="btn-entrada"><i class="fas fa-sign-in-alt"></i> REGISTRAR ENTRADA</button>
-                <button id="btnRegistrarSaida" class="btn-saida"><i class="fas fa-sign-out-alt"></i> REGISTRAR SAÍDA</button>
-            </div>
 
-            <div class="historico">
-                <h3><i class="fas fa-history"></i> Últimos registros de ponto</h3>
-                <div class="lista-pontos" id="pointsList">
-                    <div class="empty-msg">Aguardando registros...</div>
+        <!-- Abas -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="pontoTab"><i class="fas fa-fingerprint"></i> Registrar Ponto</button>
+            <button class="tab-btn" data-tab="adminTab" id="adminTabBtn" style="display: none;"><i class="fas fa-users-cog"></i> Administração</button>
+        </div>
+
+        <!-- Aba Registrar Ponto -->
+        <div id="pontoTab" class="tab-pane active">
+            <div class="card">
+                <h3><i class="fas fa-user-check"></i> Selecione o colaborador</h3>
+                <select id="selectColaborador" class="form-control" style="width:100%; margin-top: 10px;"></select>
+                <div id="postoPreview" style="margin-top: 10px; padding: 8px; background:#f0f6fe; border-radius: 40px;"><i class="fas fa-tag"></i> Posto: <span id="postoSelecionado">—</span></div>
+                <div style="display: flex; gap: 1rem; margin: 20px 0;">
+                    <button id="btnEntrada" class="btn-entrada" style="flex:1;"><i class="fas fa-sign-in-alt"></i> ENTRADA</button>
+                    <button id="btnSaida" class="btn-saida" style="flex:1;"><i class="fas fa-sign-out-alt"></i> SAÍDA</button>
                 </div>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-history"></i> Histórico de registros</h3>
+                <div id="historicoList" class="lista">Carregando...</div>
+            </div>
+        </div>
+
+        <!-- Aba Administração (só admin) -->
+        <div id="adminTab" class="tab-pane">
+            <div class="card">
+                <h3><i class="fas fa-user-plus"></i> Novo Colaborador</h3>
+                <input type="text" id="novoNome" placeholder="Nome completo" style="width:100%; margin-top: 5px;">
+                <input type="text" id="novoPosto" placeholder="Posto de serviço" style="width:100%; margin: 10px 0;">
+                <input type="email" id="novoEmail" placeholder="E-mail para login" style="width:100%;">
+                <input type="password" id="novaSenha" placeholder="Senha inicial" style="width:100%; margin: 10px 0;">
+                <button id="btnCriarColaborador"><i class="fas fa-save"></i> Criar colaborador</button>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-users"></i> Colaboradores cadastrados</h3>
+                <div id="listaColaboradores" class="lista">Carregando...</div>
             </div>
         </div>
     </div>
-    <footer>
-        <i class="fab fa-firebase"></i> Firebase Firestore | Controle de ponto com gestão de colaboradores e postos | Dados seguros com autenticação anônima
-    </footer>
 </div>
 
 <script type="module">
-    // =========== SUAS CREDENCIAIS FIREBASE ===========
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, serverTimestamp, getDocs, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // Configuração Firebase (substitua pelos seus dados)
     const firebaseConfig = {
         apiKey: "AIzaSyAind6SC1AyJLhN5G456VrvNDBTIt2bLWs",
         authDomain: "ponto-1-e1ef4.firebaseapp.com",
@@ -322,35 +119,41 @@
         messagingSenderId: "143094232583",
         appId: "1:143094232583:web:5636e6e0b21b9989151ca2"
     };
-    // =================================================
-
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, serverTimestamp, getDocs, writeBatch } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const auth = getAuth(app);
 
     // Elementos
+    const loginScreen = document.getElementById('loginScreen');
+    const systemScreen = document.getElementById('systemScreen');
+    const loginEmail = document.getElementById('loginEmail');
+    const loginSenha = document.getElementById('loginSenha');
+    const btnLogin = document.getElementById('btnLogin');
+    const loginError = document.getElementById('loginError');
+    const btnLogout = document.getElementById('btnLogout');
+    const userNameSpan = document.getElementById('userName');
+    const userRoleSpan = document.getElementById('userRole');
+    const adminTabBtn = document.getElementById('adminTabBtn');
+    const selectColaborador = document.getElementById('selectColaborador');
+    const postoSelecionadoSpan = document.getElementById('postoSelecionado');
+    const btnEntrada = document.getElementById('btnEntrada');
+    const btnSaida = document.getElementById('btnSaida');
+    const historicoList = document.getElementById('historicoList');
+    const listaColaboradoresDiv = document.getElementById('listaColaboradores');
+    const btnCriarColaborador = document.getElementById('btnCriarColaborador');
     const novoNome = document.getElementById('novoNome');
     const novoPosto = document.getElementById('novoPosto');
-    const btnAdd = document.getElementById('btnAddColaborador');
-    const listaDiv = document.getElementById('listaColabContainer');
-    const selectColab = document.getElementById('selectColaborador');
-    const postoSelecionadoSpan = document.getElementById('postoSelecionado');
-    const infoSelecionado = document.getElementById('infoSelecionado');
-    const btnEntrada = document.getElementById('btnRegistrarEntrada');
-    const btnSaida = document.getElementById('btnRegistrarSaida');
-    const pointsListDiv = document.getElementById('pointsList');
+    const novoEmail = document.getElementById('novoEmail');
+    const novaSenha = document.getElementById('novaSenha');
 
-    let colaboradoresMap = new Map(); // id -> { nome, posto }
+    let currentUser = null; // { uid, email, role, nome, posto }
+    let colaboradoresMap = new Map(); // id -> { nome, posto, email, role }
     let selectedColabId = null;
 
-    // Toast
     function showToast(msg, isError = false) {
-        const old = document.querySelector('.toast');
-        if (old) old.remove();
+        const existing = document.querySelector('.toast');
+        if (existing) existing.remove();
         const toast = document.createElement('div');
         toast.className = 'toast';
         toast.style.background = isError ? '#b91c1c' : '#1f6392';
@@ -359,236 +162,327 @@
         setTimeout(() => toast.remove(), 3000);
     }
 
-    // Autenticação anônima
-    signInAnonymously(auth).catch(err => {
-        console.error(err);
-        showToast("Erro de autenticação: " + err.message, true);
-    });
+    // Criar admin padrão se não existir (somente uma vez)
+    async function criarAdminPadrao() {
+        const adminEmail = "admin@admin.com";
+        const adminSenha = "admin123";
+        try {
+            const userCred = await createUserWithEmailAndPassword(auth, adminEmail, adminSenha);
+            const userId = userCred.user.uid;
+            // Verifica se já existe documento na coleção usuarios
+            const q = query(collection(db, "usuarios"), where("email", "==", adminEmail));
+            const snap = await getDocs(q);
+            if (snap.empty) {
+                await addDoc(collection(db, "usuarios"), {
+                    uid: userId,
+                    email: adminEmail,
+                    role: "admin",
+                    nome: "Administrador",
+                    posto: "Gestor"
+                });
+                console.log("Admin padrão criado.");
+            }
+        } catch (err) {
+            if (err.code !== 'auth/email-already-exists') console.error(err);
+        }
+    }
 
-    // 1. Carregar colaboradores em tempo real
-    function loadColaboradores() {
-        const colabRef = collection(db, "colaboradores");
-        const q = query(colabRef, orderBy("nome", "asc"));
+    // Carregar dados do usuário logado (via Firestore)
+    async function carregarDadosUsuario(uid, email) {
+        const q = query(collection(db, "usuarios"), where("uid", "==", uid));
+        const snap = await getDocs(q);
+        if (!snap.empty) {
+            const doc = snap.docs[0];
+            const data = doc.data();
+            return { ...data, id: doc.id };
+        } else {
+            // Se não encontrou, cria como colaborador (fallback)
+            return { role: "colaborador", nome: email.split('@')[0], posto: "Não definido" };
+        }
+    }
+
+    // Carregar lista de colaboradores (para select e admin)
+    function carregarColaboradores() {
+        const q = query(collection(db, "usuarios"), orderBy("nome"));
         return onSnapshot(q, (snapshot) => {
             colaboradoresMap.clear();
-            let htmlList = '';
-            let options = '<option value="">-- Escolha um colaborador --</option>';
-            
+            let options = '<option value="">-- Selecione um colaborador --</option>';
+            let listaAdminHtml = '';
             snapshot.forEach(docSnap => {
                 const data = docSnap.data();
                 const id = docSnap.id;
                 const nome = data.nome || "Sem nome";
-                const posto = data.posto || "Não informado";
-                colaboradoresMap.set(id, { nome, posto, id });
-                
-                htmlList += `
-                    <div class="colab-item" data-id="${id}">
-                        <div class="colab-info">
-                            <span class="colab-nome"><i class="fas fa-user"></i> ${escapeHtml(nome)}</span>
-                            <span class="colab-posto"><i class="fas fa-briefcase"></i> ${escapeHtml(posto)}</span>
+                const posto = data.posto || "";
+                const email = data.email || "";
+                const role = data.role || "colaborador";
+                colaboradoresMap.set(id, { nome, posto, email, role, id });
+                options += `<option value="${id}">${nome} (${posto})</option>`;
+                if (currentUser && currentUser.role === 'admin') {
+                    listaAdminHtml += `
+                        <div class="item flex-between">
+                            <div><strong>${nome}</strong> - ${posto}<br><small>${email}</small><br><span class="badge" style="background:#e2e8f0;">${role}</span></div>
+                            <button class="btn-danger btn-sm" data-id="${id}" data-nome="${nome}"><i class="fas fa-trash"></i> Excluir</button>
                         </div>
-                        <button class="btn-danger btn-sm btn-excluir-colab" data-id="${id}" data-nome="${escapeHtml(nome)}"><i class="fas fa-trash-alt"></i> Excluir</button>
-                    </div>
-                `;
-                options += `<option value="${id}">${escapeHtml(nome)} (${escapeHtml(posto)})</option>`;
+                    `;
+                }
             });
-            
-            if (snapshot.empty) {
-                listaDiv.innerHTML = '<div class="empty-msg"><i class="far fa-folder-open"></i> Nenhum colaborador. Adicione acima.</div>';
-                selectColab.innerHTML = '<option value="">-- Nenhum colaborador disponível --</option>';
-                postoSelecionadoSpan.innerText = '—';
-                selectedColabId = null;
-                infoSelecionado.innerHTML = '<i class="fas fa-info-circle"></i> Nenhum colaborador selecionado.';
-                return;
-            }
-            
-            listaDiv.innerHTML = htmlList;
-            selectColab.innerHTML = options;
-            
-            // Restaura seleção se ainda existir
-            if (selectedColabId && colaboradoresMap.has(selectedColabId)) {
-                selectColab.value = selectedColabId;
-                const colab = colaboradoresMap.get(selectedColabId);
-                postoSelecionadoSpan.innerText = colab.posto;
-                infoSelecionado.innerHTML = `<i class="fas fa-check-circle"></i> Colaborador: <strong>${escapeHtml(colab.nome)}</strong> | Posto: ${escapeHtml(colab.posto)}`;
-            } else {
-                selectColab.value = "";
-                selectedColabId = null;
-                postoSelecionadoSpan.innerText = '—';
-                infoSelecionado.innerHTML = '<i class="fas fa-info-circle"></i> Nenhum colaborador selecionado.';
-            }
-            
-            // Eventos exclusão
-            document.querySelectorAll('.btn-excluir-colab').forEach(btn => {
+            selectColaborador.innerHTML = options;
+            if (listaColaboradoresDiv) listaColaboradoresDiv.innerHTML = listaAdminHtml || '<div class="item">Nenhum colaborador cadastrado.</div>';
+            // Eventos de exclusão (admin)
+            document.querySelectorAll('[data-id]').forEach(btn => {
                 btn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    const id = btn.getAttribute('data-id');
+                    const colabId = btn.getAttribute('data-id');
                     const nome = btn.getAttribute('data-nome');
                     if (confirm(`Excluir "${nome}" e todos os seus registros de ponto?`)) {
-                        await excluirColaboradorComPontos(id);
+                        await excluirColaboradorComPontos(colabId);
                     }
                 });
             });
-        }, err => {
-            console.error(err);
-            listaDiv.innerHTML = `<div class="empty-msg">Erro: ${err.message}</div>`;
-        });
+            // Restaura seleção se possível
+            if (selectedColabId && colaboradoresMap.has(selectedColabId)) {
+                selectColaborador.value = selectedColabId;
+                const c = colaboradoresMap.get(selectedColabId);
+                postoSelecionadoSpan.innerText = c.posto;
+            } else {
+                selectColaborador.value = "";
+                postoSelecionadoSpan.innerText = '—';
+                selectedColabId = null;
+            }
+        }, err => console.error(err));
     }
-    
-    // Excluir colaborador + todos os pontos vinculados
+
     async function excluirColaboradorComPontos(colabId) {
         try {
             const colab = colaboradoresMap.get(colabId);
             if (!colab) return;
-            // Buscar todos os pontos
+            // Excluir pontos do usuário
             const pontosRef = collection(db, "pontos");
-            const snapshot = await getDocs(query(pontosRef));
+            const qPontos = query(pontosRef, where("userId", "==", colab.uid || colabId));
+            const snap = await getDocs(qPontos);
             const batch = writeBatch(db);
-            let count = 0;
-            snapshot.forEach(docSnap => {
-                if (docSnap.data().colaboradorId === colabId) {
-                    batch.delete(doc(db, "pontos", docSnap.id));
-                    count++;
-                }
-            });
-            batch.delete(doc(db, "colaboradores", colabId));
+            snap.forEach(d => batch.delete(doc(db, "pontos", d.id)));
+            // Excluir documento usuario
+            batch.delete(doc(db, "usuarios", colabId));
             await batch.commit();
-            showToast(`Colaborador ${colab.nome} e ${count} registro(s) de ponto removidos.`);
-            if (selectedColabId === colabId) {
-                selectedColabId = null;
-                postoSelecionadoSpan.innerText = '—';
-                infoSelecionado.innerHTML = '<i class="fas fa-info-circle"></i> Nenhum colaborador selecionado.';
-            }
+            showToast(`Colaborador ${colab.nome} removido com sucesso.`);
+            if (selectedColabId === colabId) selectedColabId = null;
         } catch (err) {
-            showToast("Erro ao excluir: " + err.message, true);
+            showToast("Erro: " + err.message, true);
         }
     }
-    
-    // 2. Carregar pontos em tempo real
-    function loadPontos() {
-        const pontosRef = collection(db, "pontos");
-        const q = query(pontosRef, orderBy("timestamp", "desc"), limit(50));
+
+    // Histórico (filtrado por admin ou colaborador)
+    function carregarHistorico() {
+        let q;
+        if (currentUser.role === 'admin') {
+            q = query(collection(db, "pontos"), orderBy("timestamp", "desc"), limit(100));
+        } else {
+            // Colaborador vê apenas seus pontos
+            q = query(collection(db, "pontos"), where("userId", "==", currentUser.uid), orderBy("timestamp", "desc"), limit(100));
+        }
         return onSnapshot(q, (snapshot) => {
             if (snapshot.empty) {
-                pointsListDiv.innerHTML = '<div class="empty-msg"><i class="far fa-clock"></i> Nenhuma marcação de ponto ainda.</div>';
+                historicoList.innerHTML = '<div class="item">Nenhum registro de ponto.</div>';
                 return;
             }
             let html = '';
-            snapshot.forEach(docSnap => {
-                const data = docSnap.data();
-                const colaboradorId = data.colaboradorId;
-                let nomeExibido = "Colaborador removido";
-                let postoExibido = "";
-                if (colaboradorId && colaboradoresMap.has(colaboradorId)) {
-                    const colab = colaboradoresMap.get(colaboradorId);
-                    nomeExibido = colab.nome;
-                    postoExibido = colab.posto;
-                } else if (data.employeeName) {
-                    nomeExibido = data.employeeName;
-                }
-                const tipo = data.type || 'Registro';
-                let timestampFormatted = '--';
-                if (data.timestamp) {
-                    const date = data.timestamp.toDate ? data.timestamp.toDate() : new Date(data.timestamp);
-                    timestampFormatted = date.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
-                }
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const nome = data.employeeName || "Desconhecido";
+                const posto = data.employeePosto || "";
+                const tipo = data.type;
+                let ts = data.timestamp?.toDate() || new Date();
+                const dataStr = ts.toLocaleString('pt-BR');
                 html += `
-                    <div class="ponto-item">
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline;">
-                            <span style="font-weight:600;"><i class="fas fa-user"></i> ${escapeHtml(nomeExibido)}</span>
-                            ${postoExibido ? `<span style="background:#f0e6d2; padding:2px 8px; border-radius:20px;">${escapeHtml(postoExibido)}</span>` : ''}
-                            <span style="background:${tipo === 'Entrada' ? '#d9f0e3' : '#ffe1db'}; padding:2px 12px; border-radius:40px;">${tipo}</span>
-                            <span style="font-family:monospace;">${timestampFormatted}</span>
+                    <div class="item">
+                        <div class="flex-between">
+                            <span><strong>${nome}</strong> ${posto ? `(${posto})` : ''}</span>
+                            <span class="badge" style="background:${tipo === 'Entrada' ? '#d9f0e3' : '#ffe1db'}">${tipo}</span>
                         </div>
+                        <div><small>${dataStr}</small></div>
                     </div>
                 `;
             });
-            pointsListDiv.innerHTML = html;
-        }, err => {
-            console.error(err);
-            pointsListDiv.innerHTML = `<div class="empty-msg">Erro ao carregar pontos: ${err.message}</div>`;
-        });
+            historicoList.innerHTML = html;
+        }, err => console.error(err));
     }
-    
-    // 3. Registrar ponto (entrada/saída)
+
+    // Registrar ponto
     async function registrarPonto(tipo) {
-        if (!selectedColabId) {
-            showToast("Selecione um colaborador na lista suspensa.", true);
-            return;
-        }
-        const colab = colaboradoresMap.get(selectedColabId);
-        if (!colab) {
-            showToast("Colaborador não encontrado.", true);
-            return;
-        }
-        try {
-            await addDoc(collection(db, "pontos"), {
-                colaboradorId: selectedColabId,
-                employeeName: colab.nome,
-                employeePosto: colab.posto,
-                type: tipo,
-                timestamp: serverTimestamp(),
-                createdAt: new Date().toISOString()
-            });
-            showToast(`✅ Ponto de ${tipo} registrado para ${colab.nome} (${colab.posto})`);
-        } catch (err) {
-            showToast("Erro ao registrar: " + err.message, true);
+        if (currentUser.role === 'colaborador') {
+            // colaborador só pode registrar seu próprio ponto
+            const nome = currentUser.nome;
+            const posto = currentUser.posto;
+            try {
+                await addDoc(collection(db, "pontos"), {
+                    userId: currentUser.uid,
+                    employeeName: nome,
+                    employeePosto: posto,
+                    type: tipo,
+                    timestamp: serverTimestamp()
+                });
+                showToast(`✅ Ponto de ${tipo} registrado para ${nome}`);
+            } catch (err) {
+                showToast("Erro: " + err.message, true);
+            }
+        } else if (currentUser.role === 'admin' && selectedColabId) {
+            const colab = colaboradoresMap.get(selectedColabId);
+            if (!colab) { showToast("Selecione um colaborador válido.", true); return; }
+            try {
+                await addDoc(collection(db, "pontos"), {
+                    userId: colab.uid || selectedColabId,
+                    employeeName: colab.nome,
+                    employeePosto: colab.posto,
+                    type: tipo,
+                    timestamp: serverTimestamp()
+                });
+                showToast(`✅ Ponto de ${tipo} registrado para ${colab.nome}`);
+            } catch (err) {
+                showToast("Erro: " + err.message, true);
+            }
+        } else {
+            showToast("Selecione um colaborador (admin) ou use seu próprio nome.", true);
         }
     }
-    
-    // 4. Adicionar colaborador
-    async function adicionarColaborador() {
+
+    // Criar novo colaborador (admin)
+    async function criarColaborador() {
         const nome = novoNome.value.trim();
         const posto = novoPosto.value.trim();
-        if (!nome || !posto) {
-            showToast("Preencha nome e posto de serviço.", true);
+        const email = novoEmail.value.trim();
+        const senha = novaSenha.value.trim();
+        if (!nome || !posto || !email || !senha) {
+            showToast("Preencha todos os campos.", true);
             return;
         }
         try {
-            await addDoc(collection(db, "colaboradores"), {
+            const userCred = await createUserWithEmailAndPassword(auth, email, senha);
+            const uid = userCred.user.uid;
+            await addDoc(collection(db, "usuarios"), {
+                uid: uid,
+                email: email,
+                role: "colaborador",
                 nome: nome,
-                posto: posto,
-                createdAt: serverTimestamp()
+                posto: posto
             });
-            showToast(`Colaborador ${nome} adicionado.`);
-            novoNome.value = "";
-            novoPosto.value = "";
+            showToast(`Colaborador ${nome} criado com sucesso!`);
+            novoNome.value = ""; novoPosto.value = ""; novoEmail.value = ""; novaSenha.value = "";
         } catch (err) {
-            showToast("Erro ao adicionar: " + err.message, true);
+            showToast("Erro: " + err.message, true);
         }
     }
-    
-    // Eventos
-    btnAdd.addEventListener('click', adicionarColaborador);
-    btnEntrada.addEventListener('click', () => registrarPonto('Entrada'));
-    btnSaida.addEventListener('click', () => registrarPonto('Saída'));
-    selectColab.addEventListener('change', (e) => {
-        const id = e.target.value;
-        if (id && colaboradoresMap.has(id)) {
-            selectedColabId = id;
-            const colab = colaboradoresMap.get(id);
-            postoSelecionadoSpan.innerText = colab.posto;
-            infoSelecionado.innerHTML = `<i class="fas fa-check-circle"></i> Selecionado: <strong>${escapeHtml(colab.nome)}</strong> | Posto: ${escapeHtml(colab.posto)}`;
+
+    // Alternar abas
+    function configurarAbas(role) {
+        const adminTab = document.getElementById('adminTab');
+        if (role === 'admin') {
+            adminTabBtn.style.display = 'flex';
         } else {
-            selectedColabId = null;
-            postoSelecionadoSpan.innerText = '—';
-            infoSelecionado.innerHTML = '<i class="fas fa-info-circle"></i> Nenhum colaborador selecionado.';
+            adminTabBtn.style.display = 'none';
+            if (adminTab) adminTab.classList.remove('active');
+            document.querySelector('[data-tab="pontoTab"]').click();
         }
-    });
-    
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, (m) => {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
         });
     }
-    
-    // Inicialização
-    loadColaboradores();
-    loadPontos();
+
+    // Logout
+    async function logout() {
+        await signOut(auth);
+        location.reload();
+    }
+
+    // Login
+    btnLogin.onclick = async () => {
+        const email = loginEmail.value;
+        const senha = loginSenha.value;
+        try {
+            const userCred = await signInWithEmailAndPassword(auth, email, senha);
+            const user = userCred.user;
+            const userData = await carregarDadosUsuario(user.uid, user.email);
+            currentUser = {
+                uid: user.uid,
+                email: user.email,
+                role: userData.role || 'colaborador',
+                nome: userData.nome || user.email.split('@')[0],
+                posto: userData.posto || ''
+            };
+            userNameSpan.innerText = currentUser.nome;
+            userRoleSpan.innerText = currentUser.role === 'admin' ? 'Administrador' : 'Colaborador';
+            configurarAbas(currentUser.role);
+            loginScreen.style.display = 'none';
+            systemScreen.style.display = 'block';
+            // Inicializa listeners
+            carregarColaboradores();
+            carregarHistorico();
+            if (currentUser.role === 'admin') {
+                selectColaborador.disabled = false;
+                selectColaborador.onchange = (e) => {
+                    selectedColabId = e.target.value;
+                    if (selectedColabId && colaboradoresMap.has(selectedColabId)) {
+                        postoSelecionadoSpan.innerText = colaboradoresMap.get(selectedColabId).posto;
+                    } else postoSelecionadoSpan.innerText = '—';
+                };
+            } else {
+                // Colaborador: esconde select e mostra apenas seu posto
+                selectColaborador.style.display = 'none';
+                document.getElementById('postoPreview').innerHTML = `<i class="fas fa-tag"></i> Seu posto: ${currentUser.posto}`;
+                postoSelecionadoSpan.innerText = currentUser.posto;
+            }
+        } catch (err) {
+            loginError.innerText = "E-mail ou senha inválidos.";
+            console.error(err);
+        }
+    };
+
+    btnLogout.onclick = logout;
+    btnEntrada.onclick = () => registrarPonto('Entrada');
+    btnSaida.onclick = () => registrarPonto('Saída');
+    if (btnCriarColaborador) btnCriarColaborador.onclick = criarColaborador;
+
+    // Verificar se já está logado
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            const userData = await carregarDadosUsuario(user.uid, user.email);
+            currentUser = {
+                uid: user.uid,
+                email: user.email,
+                role: userData.role || 'colaborador',
+                nome: userData.nome || user.email.split('@')[0],
+                posto: userData.posto || ''
+            };
+            userNameSpan.innerText = currentUser.nome;
+            userRoleSpan.innerText = currentUser.role === 'admin' ? 'Administrador' : 'Colaborador';
+            configurarAbas(currentUser.role);
+            loginScreen.style.display = 'none';
+            systemScreen.style.display = 'block';
+            carregarColaboradores();
+            carregarHistorico();
+            if (currentUser.role === 'admin') {
+                selectColaborador.disabled = false;
+                selectColaborador.onchange = (e) => {
+                    selectedColabId = e.target.value;
+                    if (selectedColabId && colaboradoresMap.has(selectedColabId)) {
+                        postoSelecionadoSpan.innerText = colaboradoresMap.get(selectedColabId).posto;
+                    } else postoSelecionadoSpan.innerText = '—';
+                };
+            } else {
+                selectColaborador.style.display = 'none';
+                document.getElementById('postoPreview').innerHTML = `<i class="fas fa-tag"></i> Seu posto: ${currentUser.posto}`;
+            }
+        } else {
+            loginScreen.style.display = 'block';
+            systemScreen.style.display = 'none';
+            await criarAdminPadrao(); // Garante admin inicial
+        }
+    });
 </script>
 </body>
 </html>
