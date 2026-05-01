@@ -7,39 +7,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"/>
 
-<!-- Firebase SDK -->
+<!-- Firebase SDK (modular) -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getDatabase, ref, push, set, onValue, remove, update, get }
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  import { getFirestore, collection, doc, addDoc, setDoc, updateDoc, deleteDoc, getDoc, getDocs, query, orderBy, onSnapshot, serverTimestamp, where, writeBatch } 
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   // ══════════════════════════════════════════════════════
-  //  🔧 SUBSTITUA AQUI COM SUAS CREDENCIAIS DO FIREBASE
+  //  🔧 SUAS CREDENCIAIS DO FIREBASE (FIRESTORE)
   // ══════════════════════════════════════════════════════
   const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
-    authDomain: "SEU_PROJETO.firebaseapp.com",
-    databaseURL: "https://SEU_PROJETO-default-rtdb.firebaseio.com",
-    projectId: "SEU_PROJETO",
-    storageBucket: "SEU_PROJETO.appspot.com",
-    messagingSenderId: "SEU_SENDER_ID",
-    appId: "SEU_APP_ID"
+    apiKey: "AIzaSyAind6SC1AyJLhN5G456VrvNDBTIt2bLWs",
+    authDomain: "ponto-1-e1ef4.firebaseapp.com",
+    projectId: "ponto-1-e1ef4",
+    storageBucket: "ponto-1-e1ef4.firebasestorage.app",
+    messagingSenderId: "143094232583",
+    appId: "1:143094232583:web:5636e6e0b21b9989151ca2"
   };
 
   let db;
   try {
     const app = initializeApp(firebaseConfig);
-    db = getDatabase(app);
+    db = getFirestore(app);
     window._firebaseReady = true;
     window._db = db;
-    window._fbRef = ref;
-    window._fbPush = push;
-    window._fbSet = set;
-    window._fbOnValue = onValue;
-    window._fbRemove = remove;
-    window._fbUpdate = update;
-    window._fbGet = get;
-    console.log("✅ Firebase conectado");
+    window._firestore = { collection, doc, addDoc, setDoc, updateDoc, deleteDoc, getDoc, getDocs, query, orderBy, onSnapshot, where, writeBatch, serverTimestamp };
+    console.log("✅ Firebase conectado (Firestore)");
   } catch(e) {
     console.warn("⚠️ Firebase não configurado, usando localStorage:", e.message);
     window._firebaseReady = false;
@@ -244,7 +237,6 @@ header {
 .status-dot { width:7px; height:7px; border-radius:50%; background:var(--green); animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 #22c55e66} 50%{opacity:.8;box-shadow:0 0 0 5px transparent} }
 
-/* User chip */
 .user-chip {
   font-size: 12px; font-family: var(--font-mono);
   background: var(--surface2); color: var(--accent);
@@ -254,7 +246,6 @@ header {
 }
 .user-chip:hover { border-color: var(--accent); }
 
-/* ── TABS ── */
 .tabs { display: flex; gap: 0; }
 .tab-btn {
   background: transparent; border: none; cursor: pointer;
@@ -273,7 +264,6 @@ header {
 .tab-btn.admin-tab { color: var(--gold); }
 .tab-btn.admin-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-/* ── MAIN ── */
 main {
   max-width: 960px; margin: 0 auto;
   padding: 36px 20px 60px; position: relative; z-index: 1;
@@ -283,7 +273,6 @@ main {
 .tab-content.active { display: block; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
-/* ── CLOCK ── */
 .clock-wrap { text-align: center; margin-bottom: 36px; }
 .clock-time {
   font-family: var(--font-mono);
@@ -297,7 +286,6 @@ main {
   text-transform: capitalize; letter-spacing: 0.5px;
 }
 
-/* ── CARDS ── */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -311,7 +299,6 @@ main {
   margin-bottom: 16px;
 }
 
-/* ── COLABORADOR ITEM ── */
 .colab-list { display: grid; gap: 10px; margin-bottom: 24px; }
 .colab-item {
   background: var(--surface); border: 2px solid var(--border);
@@ -349,7 +336,6 @@ main {
 .tag-out { background: var(--red-bg);   color: var(--red);   border: 1px solid #dc262644; }
 .status-time { font-size: 11px; color: var(--muted); margin-top: 4px; font-family: var(--font-mono); }
 
-/* ── PONTO BUTTONS ── */
 .ponto-btns {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px;
 }
@@ -379,7 +365,6 @@ main {
 .btn-saida:hover { box-shadow: 0 12px 48px #ef444455; }
 .btn-ponto .icon { font-size: 46px; line-height: 1; }
 
-/* ── FEEDBACK BANNER ── */
 .feedback {
   border-radius: 14px; padding: 18px 24px;
   margin-bottom: 24px; text-align: center;
@@ -392,7 +377,6 @@ main {
 .feedback.saida   .feedback-title { color: var(--red); }
 .feedback-sub { font-size: 13px; color: var(--muted); margin-top: 4px; font-family: var(--font-mono); }
 
-/* ── FACE MODAL ── */
 .overlay {
   position: fixed; inset: 0; background: #000c; z-index: 200;
   display: flex; align-items: center; justify-content: center;
@@ -450,7 +434,6 @@ main {
 }
 .btn-cancel:hover { border-color: var(--muted); color: var(--text); }
 
-/* ── HISTORICO ── */
 .filter-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;
 }
@@ -512,7 +495,6 @@ tbody tr:hover { background: #0d1930; }
 }
 .btn-clear:hover { color: var(--text); border-color: var(--muted); }
 
-/* ── COLABORADORES GESTÃO ── */
 .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .form-row .input { flex: 1; min-width: 200px; }
 .btn-primary {
@@ -570,9 +552,6 @@ tbody tr:hover { background: #0d1930; }
 .confirm-btns { display: flex; gap: 12px; justify-content: center; }
 .card.editing { border-color: var(--accent); box-shadow: 0 0 30px #0ea5e920; }
 
-/* ══════════════════════════════════════════
-   GESTÃO DE USUÁRIOS (ABA ADMIN)
-══════════════════════════════════════════ */
 .user-list { display: grid; gap: 10px; }
 .user-item {
   background: var(--surface); border: 1px solid var(--border);
@@ -606,7 +585,6 @@ tbody tr:hover { background: #0d1930; }
 }
 .info-box strong { color: var(--accent); }
 
-/* ── FOOTER ── */
 footer {
   text-align: center; padding: 24px;
   border-top: 1px solid var(--border2); color: var(--muted2);
@@ -614,7 +592,6 @@ footer {
   position: relative; z-index: 1;
 }
 
-/* ── RESPONSIVE ── */
 @media(max-width:600px) {
   .clock-time { font-size: 52px; }
   .ponto-btns { grid-template-columns: 1fr; }
@@ -752,9 +729,7 @@ footer {
       <div style="overflow-x:auto">
         <table>
           <thead>
-            <tr>
-              <th>Data</th><th>Hora</th><th>Colaborador</th><th>Posto</th><th>Tipo</th>
-            </tr>
+            <tr><th>Data</th><th>Hora</th><th>Colaborador</th><th>Posto</th><th>Tipo</th></tr>
           </thead>
           <tbody id="hist-tbody"></tbody>
         </table>
@@ -886,8 +861,8 @@ footer {
 // ─── ESTADO ───────────────────────────────────────────────────────────────────
 let colaboradores  = [];
 let registros      = [];
-let usuarios       = [];       // lista de acessos
-let currentUser    = null;     // usuário logado
+let usuarios       = [];
+let currentUser    = null;
 let selectedColab  = null;
 let pendingTipo    = null;
 let editId         = null;
@@ -897,118 +872,130 @@ let delUserTargetId = null;
 let histPage       = 1;
 const POR_PAGINA   = 15;
 
-// ─── STORAGE (Firebase ou localStorage) ──────────────────────────────────────
-function saveColabs() {
-  if (window._firebaseReady) {
-    window._fbSet(window._fbRef(window._db, 'colaboradores'), toFirebaseObj(colaboradores, 'id'));
-  }
-  localStorage.setItem('ms_colaboradores', JSON.stringify(colaboradores));
-}
+// ─── HELPER: CARREGAR DADOS DO FIRESTORE ─────────────────────────────────────
+async function carregarDadosFirestore() {
+  if (!window._firebaseReady) return;
+  const { collection, getDocs, onSnapshot, query, orderBy } = window._firestore;
+  const db = window._db;
 
-function saveRegistros() {
-  if (window._firebaseReady) {
-    window._fbSet(window._fbRef(window._db, 'registros'), toFirebaseObj(registros, 'id'));
-  }
-  localStorage.setItem('ms_registros', JSON.stringify(registros));
-}
-
-function saveUsuarios() {
-  if (window._firebaseReady) {
-    window._fbSet(window._fbRef(window._db, 'usuarios'), toFirebaseObj(usuarios, 'id'));
-  }
-  localStorage.setItem('ms_usuarios', JSON.stringify(usuarios));
-}
-
-function toFirebaseObj(arr, key) {
-  const obj = {};
-  arr.forEach(item => { obj[item[key]] = item; });
-  return obj;
-}
-function fromFirebaseObj(obj) {
-  return obj ? Object.values(obj) : [];
-}
-
-function loadData() {
-  if (window._firebaseReady) {
-    window._fbOnValue(window._fbRef(window._db, 'colaboradores'), snap => {
-      const data = snap.val();
-      if (data) {
-        colaboradores = fromFirebaseObj(data);
-        if (!colaboradores.length) seedColaboradores();
-      } else { seedColaboradores(); }
-      renderAll();
-    });
-    window._fbOnValue(window._fbRef(window._db, 'registros'), snap => {
-      const data = snap.val();
-      registros = data ? fromFirebaseObj(data).sort((a,b)=>b.timestamp-a.timestamp) : [];
-      renderAll();
-    });
-    window._fbOnValue(window._fbRef(window._db, 'usuarios'), snap => {
-      const data = snap.val();
-      if (data) {
-        usuarios = fromFirebaseObj(data);
-        if (!usuarios.length) seedAdminUser();
-      } else { seedAdminUser(); }
-      renderUsuarios();
-    });
-  } else {
-    try { colaboradores = JSON.parse(localStorage.getItem('ms_colaboradores')) || []; } catch { colaboradores=[]; }
-    try { registros = JSON.parse(localStorage.getItem('ms_registros')) || []; } catch { registros=[]; }
-    try { usuarios = JSON.parse(localStorage.getItem('ms_usuarios')) || []; } catch { usuarios=[]; }
+  // Colaboradores
+  onSnapshot(query(collection(db, "colaboradores"), orderBy("nome")), (snap) => {
+    colaboradores = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     if (!colaboradores.length) seedColaboradores();
-    if (!usuarios.length) seedAdminUser();
     renderAll();
+  });
+  // Registros (pontos)
+  onSnapshot(query(collection(db, "registros"), orderBy("timestamp", "desc")), (snap) => {
+    registros = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderAll();
+  });
+  // Usuários
+  onSnapshot(query(collection(db, "usuarios"), orderBy("login")), (snap) => {
+    usuarios = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    if (!usuarios.length) seedAdminUser();
     renderUsuarios();
+    // Se houver sessão ativa, valida novamente
+    if (currentUser) {
+      const stillValid = usuarios.find(u => u.id === currentUser.id);
+      if (!stillValid) sairSistema();
+    }
+  });
+}
+
+async function salvarDadosFirestore(colecao, dados) {
+  if (!window._firebaseReady) return;
+  const { collection, addDoc, setDoc, doc } = window._firestore;
+  const db = window._db;
+  for (let item of dados) {
+    const ref = doc(db, colecao, item.id);
+    await setDoc(ref, item, { merge: true });
   }
 }
 
-function seedColaboradores() {
-  colaboradores = [
+// ─── SEEDS ────────────────────────────────────────────────────────────────────
+async function seedColaboradores() {
+  const exemplo = [
     { id: uid(), nome: "Carlos Silva",    posto: "Portaria Principal",       ativo: true },
     { id: uid(), nome: "Ana Souza",       posto: "Recepção Bloco A",         ativo: true },
     { id: uid(), nome: "João Ferreira",   posto: "Ronda Perimetral",         ativo: true },
     { id: uid(), nome: "Maria Oliveira",  posto: "Central de Monitoramento", ativo: true },
   ];
-  saveColabs();
+  for (let c of exemplo) {
+    await salvarColabFirestore(c);
+  }
+  colaboradores.push(...exemplo);
 }
 
-function seedAdminUser() {
-  // Cria usuário admin padrão na primeira vez
-  usuarios = [
-    { id: uid(), login: 'admin', senha: 'admin123', nome: 'Administrador', role: 'admin' }
-  ];
-  saveUsuarios();
+async function seedAdminUser() {
+  const admin = { id: uid(), login: 'admin', senha: 'admin123', nome: 'Administrador', role: 'admin' };
+  await salvarUsuarioFirestore(admin);
+  usuarios.push(admin);
 }
 
-// ─── LOGIN ────────────────────────────────────────────────────────────────────
+async function salvarColabFirestore(colab) {
+  if (!window._firebaseReady) return;
+  const { doc, setDoc } = window._firestore;
+  const db = window._db;
+  await setDoc(doc(db, "colaboradores", colab.id), colab);
+}
+
+async function salvarRegistroFirestore(reg) {
+  if (!window._firebaseReady) return;
+  const { doc, setDoc } = window._firestore;
+  const db = window._db;
+  await setDoc(doc(db, "registros", reg.id), reg);
+}
+
+async function salvarUsuarioFirestore(user) {
+  if (!window._firebaseReady) return;
+  const { doc, setDoc } = window._firestore;
+  const db = window._db;
+  await setDoc(doc(db, "usuarios", user.id), user);
+}
+
+async function excluirUsuarioFirestore(id) {
+  if (!window._firebaseReady) return;
+  const { deleteDoc, doc } = window._firestore;
+  const db = window._db;
+  await deleteDoc(doc(db, "usuarios", id));
+}
+
+async function atualizarColabFirestore(colab) {
+  await salvarColabFirestore(colab);
+}
+
+// ─── FUNÇÕES PRINCIPAIS ──────────────────────────────────────────────────────
+function uid() { return Math.random().toString(36).slice(2,10)+Date.now().toString(36); }
+function fmtHora(ts) { return new Date(ts).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
+function fmtData(ts) { return new Date(ts).toLocaleDateString('pt-BR'); }
+function avatarColor(nome) { return `hsl(${(nome.charCodeAt(0)*7+(nome.charCodeAt(1)||0)*13)%360},50%,35%)`; }
+function ultimoReg(colabId) {
+  const regs = registros.filter(r=>r.colaboradorId===colabId);
+  return regs.length ? regs.reduce((a,b)=>a.timestamp>b.timestamp?a:b) : null;
+}
+function esc(str) { return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function showToast(msg) {
+  // simples alert, pode melhorar
+  alert(msg);
+}
+
+// ─── LOGIN ───────────────────────────────────────────────────────────────────
 function fazerLogin() {
   const loginVal = document.getElementById('l-user').value.trim().toLowerCase();
   const senhaVal = document.getElementById('l-pass').value;
-
   if (!loginVal || !senhaVal) {
     mostrarErroLogin('Preencha usuário e senha');
     return;
   }
-
-  const btn = document.getElementById('btn-entrar');
-  btn.disabled = true;
-  btn.textContent = '⏳ Verificando...';
-
-  // Pequeno delay visual
-  setTimeout(() => {
-    const usuario = usuarios.find(u => u.login.toLowerCase() === loginVal && u.senha === senhaVal);
-
-    if (usuario) {
-      currentUser = usuario;
-      // Salvar sessão
-      sessionStorage.setItem('ms_session', JSON.stringify(usuario));
-      entrarSistema(usuario);
-    } else {
-      mostrarErroLogin('Usuário ou senha incorretos');
-      btn.disabled = false;
-      btn.textContent = '🔐 ENTRAR';
-    }
-  }, 600);
+  const usuario = usuarios.find(u => u.login.toLowerCase() === loginVal && u.senha === senhaVal);
+  if (usuario) {
+    currentUser = usuario;
+    sessionStorage.setItem('ms_session', JSON.stringify(usuario));
+    entrarSistema(usuario);
+  } else {
+    mostrarErroLogin('Usuário ou senha incorretos');
+  }
 }
 
 function mostrarErroLogin(msg) {
@@ -1023,24 +1010,16 @@ function entrarSistema(usuario) {
   document.getElementById('main-header').style.display = 'block';
   document.getElementById('main-content').style.display = 'block';
   document.getElementById('main-footer').style.display = 'block';
-
-  // Chip do usuário logado
   document.getElementById('chip-user-name').textContent = usuario.nome || usuario.login;
   document.getElementById('chip-user-icon').textContent = usuario.role === 'admin' ? '🛡️' : '👤';
-
-  // Controle de abas por perfil
   const isAdmin = usuario.role === 'admin';
   document.getElementById('tab-btn-colaboradores').style.display = isAdmin ? '' : 'none';
   document.getElementById('tab-btn-usuarios').style.display = isAdmin ? '' : 'none';
-
-  // Se colaborador: pré-seleciona ele na lista de ponto
   if (!isAdmin) {
-    const nomeUser = usuario.nome;
     const instrucao = document.getElementById('ponto-instrucao');
-    if (instrucao) instrucao.textContent = `Olá, ${nomeUser}! Registre sua entrada ou saída:`;
+    if (instrucao) instrucao.textContent = `Olá, ${usuario.nome}! Registre sua entrada ou saída:`;
   }
-
-  loadData();
+  renderAll();
 }
 
 function sairSistema() {
@@ -1052,38 +1031,13 @@ function sairSistema() {
   document.getElementById('main-footer').style.display = 'none';
   document.getElementById('l-user').value = '';
   document.getElementById('l-pass').value = '';
-  document.getElementById('btn-entrar').disabled = false;
-  document.getElementById('btn-entrar').textContent = '🔐 ENTRAR';
 }
 
-// Verificar sessão existente ao carregar
 function checkSession() {
-  // Aguarda o carregamento do firebase antes de tentar restaurar sessão
   setTimeout(() => {
-    // Primeiro carrega usuários para poder validar sessão
-    if (window._firebaseReady) {
-      window._fbOnValue(window._fbRef(window._db, 'usuarios'), snap => {
-        const data = snap.val();
-        if (data) {
-          usuarios = fromFirebaseObj(data);
-          if (!usuarios.length) seedAdminUser();
-        } else { seedAdminUser(); }
-        _tryRestoreSession();
-      }, { onlyOnce: true });
-    } else {
-      try { usuarios = JSON.parse(localStorage.getItem('ms_usuarios')) || []; } catch { usuarios=[]; }
-      if (!usuarios.length) seedAdminUser();
-      _tryRestoreSession();
-    }
-  }, 300);
-}
-
-function _tryRestoreSession() {
-  try {
     const saved = sessionStorage.getItem('ms_session');
-    if (saved) {
+    if (saved && usuarios.length) {
       const u = JSON.parse(saved);
-      // Valida se o usuário ainda existe e senha bate
       const valid = usuarios.find(x => x.id === u.id && x.login === u.login && x.senha === u.senha);
       if (valid) {
         currentUser = valid;
@@ -1091,42 +1045,28 @@ function _tryRestoreSession() {
         return;
       }
     }
-  } catch(e) {}
-  // Se não restaurou, mostra login
+  }, 500);
 }
 
 // ─── GESTÃO DE USUÁRIOS ───────────────────────────────────────────────────────
-function salvarUsuario() {
+async function salvarUsuario() {
   const login = document.getElementById('f-user-login').value.trim().toLowerCase();
   const senha = document.getElementById('f-user-senha').value.trim();
   const nome  = document.getElementById('f-user-nome').value.trim();
   const role  = document.getElementById('f-user-role').value;
-
-  if (!login || !senha || !nome) {
-    alert('Preencha todos os campos: usuário, senha e nome.');
-    return;
-  }
-
-  // Verificar login duplicado (exceto no edit)
-  const duplicado = usuarios.find(u => u.login.toLowerCase() === login && u.id !== editUserId);
-  if (duplicado) {
-    alert(`O usuário "${login}" já existe. Escolha outro.`);
-    return;
-  }
-
+  if (!login || !senha || !nome) { alert('Preencha todos os campos'); return; }
   if (editUserId) {
-    usuarios = usuarios.map(u => u.id === editUserId ? { ...u, login, senha, nome, role } : u);
-    // Atualizar sessão se editou o próprio usuário
-    if (currentUser && currentUser.id === editUserId) {
-      currentUser = usuarios.find(u => u.id === editUserId);
-      sessionStorage.setItem('ms_session', JSON.stringify(currentUser));
-      document.getElementById('chip-user-name').textContent = currentUser.nome || currentUser.login;
+    const index = usuarios.findIndex(u => u.id === editUserId);
+    if (index !== -1) {
+      usuarios[index] = { ...usuarios[index], login, senha, nome, role };
+      await salvarUsuarioFirestore(usuarios[index]);
     }
     cancelarEdicaoUser();
   } else {
-    usuarios.push({ id: uid(), login, senha, nome, role });
+    const novo = { id: uid(), login, senha, nome, role };
+    usuarios.push(novo);
+    await salvarUsuarioFirestore(novo);
   }
-  saveUsuarios();
   limparFormUser();
   renderUsuarios();
 }
@@ -1150,8 +1090,6 @@ function editarUsuario(id) {
   document.getElementById('btn-salvar-user').textContent = '💾 Salvar Alterações';
   document.getElementById('btn-cancelar-user').style.display = 'inline-block';
   document.getElementById('user-form-card').classList.add('editing');
-  document.getElementById('f-user-login').focus();
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function cancelarEdicaoUser() {
@@ -1168,15 +1106,14 @@ function confirmarDelUser_prompt(id) {
   document.getElementById('del-user-overlay').style.display = 'flex';
 }
 
-function confirmarDelUser() {
-  // Não permite excluir o próprio usuário logado
+async function confirmarDelUser() {
   if (currentUser && currentUser.id === delUserTargetId) {
     alert('Você não pode remover seu próprio acesso enquanto estiver logado.');
     document.getElementById('del-user-overlay').style.display = 'none';
     return;
   }
+  await excluirUsuarioFirestore(delUserTargetId);
   usuarios = usuarios.filter(u => u.id !== delUserTargetId);
-  saveUsuarios();
   delUserTargetId = null;
   document.getElementById('del-user-overlay').style.display = 'none';
   renderUsuarios();
@@ -1184,131 +1121,38 @@ function confirmarDelUser() {
 
 function renderUsuarios() {
   const busca = (document.getElementById('f-busca-user')?.value || '').toLowerCase();
-  const lista = usuarios.filter(u =>
-    u.login.toLowerCase().includes(busca) ||
-    u.nome.toLowerCase().includes(busca)
-  );
-
+  const lista = usuarios.filter(u => u.login.toLowerCase().includes(busca) || u.nome.toLowerCase().includes(busca));
   const container = document.getElementById('user-admin-list');
   if (!container) return;
-
   if (!lista.length) {
     container.innerHTML = '<p style="color:var(--muted);text-align:center;padding:32px">Nenhum usuário encontrado</p>';
     return;
   }
-
   container.innerHTML = lista.map(u => {
     const isSelf = currentUser && currentUser.id === u.id;
     return `
     <div class="user-item">
-      <div class="avatar" style="background:${avatarColor(u.nome || u.login)};font-size:18px">
-        ${(u.nome || u.login).charAt(0).toUpperCase()}
-      </div>
+      <div class="avatar" style="background:${avatarColor(u.nome || u.login)};font-size:18px">${(u.nome || u.login).charAt(0).toUpperCase()}</div>
       <div class="user-info">
-        <div class="user-login">@${esc(u.login)}
-          ${isSelf ? '<span style="font-size:10px;color:var(--muted);font-family:var(--font-mono);margin-left:8px">(você)</span>' : ''}
-        </div>
-        <div class="user-name-sub">
-          <span class="user-role ${u.role==='admin'?'role-admin':'role-colab'}">
-            ${u.role === 'admin' ? '🛡️ Admin' : '👷 Colaborador'}
-          </span>
-          ${esc(u.nome)}
-        </div>
+        <div class="user-login">@${esc(u.login)} ${isSelf ? '<span style="font-size:10px;">(você)</span>' : ''}</div>
+        <div class="user-name-sub"><span class="user-role ${u.role==='admin'?'role-admin':'role-colab'}">${u.role === 'admin' ? '🛡️ Admin' : '👷 Colaborador'}</span> ${esc(u.nome)}</div>
       </div>
-      <div style="display:flex;gap:8px;flex-shrink:0;align-items:center">
+      <div style="display:flex;gap:8px;align-items:center">
         <span class="pass-preview" title="Senha">🔒 ${esc(u.senha)}</span>
         <button class="btn-edit" onclick="editarUsuario('${u.id}')">✏️ Editar</button>
         ${!isSelf ? `<button class="btn-del" onclick="confirmarDelUser_prompt('${u.id}')">🗑️</button>` : ''}
       </div>
-    </div>
-  `}).join('');
+    </div>`;
+  }).join('');
 }
 
-// ─── UTILITÁRIOS ──────────────────────────────────────────────────────────────
-function uid() { return Math.random().toString(36).slice(2,10)+Date.now().toString(36); }
-function fmtHora(ts) { return new Date(ts).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); }
-function fmtData(ts) { return new Date(ts).toLocaleDateString('pt-BR'); }
-function avatarColor(nome) { return `hsl(${(nome.charCodeAt(0)*7+(nome.charCodeAt(1)||0)*13)%360},50%,35%)`; }
-function ultimoReg(colabId) {
-  const regs = registros.filter(r=>r.colaboradorId===colabId);
-  return regs.length ? regs.reduce((a,b)=>a.timestamp>b.timestamp?a:b) : null;
-}
-function esc(str) {
-  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// ─── RELÓGIO ──────────────────────────────────────────────────────────────────
-function tickClock() {
-  const now = new Date();
-  document.getElementById('clock').textContent =
-    now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  document.getElementById('clock-date').textContent =
-    now.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
-}
-setInterval(tickClock,1000); tickClock();
-
-// ─── TABS ─────────────────────────────────────────────────────────────────────
-function showTab(id, btn) {
-  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  btn.classList.add('active');
-  if (id==='historico') { updatePostoFilter(); renderHistorico(); }
-  if (id==='usuarios')  { renderUsuarios(); }
-}
-
-// ─── RENDER: LISTA PONTO ──────────────────────────────────────────────────────
-function renderColabPonto() {
-  const isAdmin = currentUser?.role === 'admin';
-  let ativos = colaboradores.filter(c=>c.ativo);
-
-  // Se colaborador comum: mostra só ele mesmo (por nome)
-  if (!isAdmin && currentUser) {
-    const nomeUser = currentUser.nome;
-    const mine = ativos.find(c => c.nome.toLowerCase() === nomeUser.toLowerCase());
-    ativos = mine ? [mine] : ativos; // se não achar, mostra todos
-  }
-
-  const container = document.getElementById('colab-list-ponto');
-  container.innerHTML = '';
-  ativos.forEach(c => {
-    const ult = ultimoReg(c.id);
-    const isSelected = selectedColab?.id === c.id;
-    const div = document.createElement('div');
-    div.className = 'colab-item' + (isSelected ? ' selected' : '');
-    div.onclick = () => selectColab(c);
-    div.innerHTML = `
-      <div class="avatar" style="background:${avatarColor(c.nome)}">${c.nome.charAt(0)}</div>
-      <div>
-        <div class="colab-name">${esc(c.nome)}</div>
-        <div class="colab-posto">📍 ${esc(c.posto)}</div>
-      </div>
-      ${ult ? `
-      <div class="status-tag">
-        <span class="${ult.tipo==='entrada'?'tag-in':'tag-out'}">
-          ${ult.tipo==='entrada'?'▲ DENTRO':'▼ FORA'}
-        </span>
-        <div class="status-time">${fmtHora(ult.timestamp)}</div>
-      </div>` : '<div class="status-tag"><span style="color:var(--muted);font-size:12px">–</span></div>'}
-    `;
-    container.appendChild(div);
-  });
-}
-
-function selectColab(c) {
-  selectedColab = selectedColab?.id === c.id ? null : c;
-  document.getElementById('ponto-btns').style.display = selectedColab ? 'grid' : 'none';
-  renderColabPonto();
-}
-
-// ─── BATER PONTO ─────────────────────────────────────────────────────────────
+// ─── BATER PONTO ──────────────────────────────────────────────────────────────
 function baterPonto(tipo) {
   if (!selectedColab) return;
   pendingTipo = tipo;
   openFaceModal();
 }
 
-// ─── MODAL FACIAL ────────────────────────────────────────────────────────────
 let camStream = null;
 let camState  = 'idle';
 
@@ -1320,98 +1164,58 @@ function openFaceModal() {
   resetCamera();
 }
 
-function closeFaceModal() {
-  stopCam();
-  document.getElementById('face-overlay').style.display = 'none';
-  camState = 'idle';
-  pendingTipo = null;
-}
-
-function resetCamera() {
-  camState = 'idle';
-  document.getElementById('cam-placeholder').style.display = 'flex';
-  document.getElementById('cam-video').style.display = 'none';
-  document.getElementById('scan-line').style.display = 'none';
-  document.getElementById('face-success').style.display = 'none';
-  document.getElementById('camera-wrap').className = 'camera-wrap';
-  document.getElementById('btn-camera-action').textContent = 'Ativar Câmera';
-  document.getElementById('btn-camera-action').disabled = false;
-  document.getElementById('btn-camera-action').className = 'btn-camera';
-}
-
+function closeFaceModal() { stopCam(); document.getElementById('face-overlay').style.display = 'none'; camState = 'idle'; pendingTipo = null; }
+function resetCamera() { camState='idle'; document.getElementById('cam-placeholder').style.display='flex'; document.getElementById('cam-video').style.display='none'; document.getElementById('scan-line').style.display='none'; document.getElementById('face-success').style.display='none'; document.getElementById('camera-wrap').className='camera-wrap'; document.getElementById('btn-camera-action').textContent='Ativar Câmera'; document.getElementById('btn-camera-action').disabled=false; document.getElementById('btn-camera-action').className='btn-camera'; }
 async function cameraAction() {
   if (camState === 'idle') {
-    try {
-      camStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}});
-      const vid = document.getElementById('cam-video');
-      vid.srcObject = camStream;
-      vid.style.display = 'block';
-      document.getElementById('cam-placeholder').style.display = 'none';
-      camState = 'streaming';
-      document.getElementById('btn-camera-action').textContent = '📸 Verificar Identidade';
-    } catch(e) {
-      document.getElementById('cam-placeholder').innerHTML = '<span class="face-icon">👤</span><p style="color:var(--muted);font-size:12px">Câmera indisponível<br>Modo simulado</p>';
-      camState = 'streaming';
-      document.getElementById('btn-camera-action').textContent = '📸 Verificar Identidade';
-    }
+    try { camStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}}); const vid=document.getElementById('cam-video'); vid.srcObject=camStream; vid.style.display='block'; document.getElementById('cam-placeholder').style.display='none'; camState='streaming'; document.getElementById('btn-camera-action').textContent='📸 Verificar Identidade'; }
+    catch(e) { document.getElementById('cam-placeholder').innerHTML='<span class="face-icon">👤</span><p style="color:var(--muted);font-size:12px">Câmera indisponível<br>Modo simulado</p>'; camState='streaming'; document.getElementById('btn-camera-action').textContent='📸 Verificar Identidade'; }
   } else if (camState === 'streaming') {
-    camState = 'scanning';
-    document.getElementById('camera-wrap').classList.add('scanning');
-    document.getElementById('scan-line').style.display = 'block';
-    document.getElementById('btn-camera-action').textContent = '⏳ Verificando...';
-    document.getElementById('btn-camera-action').className = 'btn-camera scanning';
-    document.getElementById('btn-camera-action').disabled = true;
-
-    setTimeout(() => {
-      camState = 'done';
-      stopCam();
-      document.getElementById('scan-line').style.display = 'none';
-      document.getElementById('cam-video').style.display = 'none';
-      document.getElementById('cam-placeholder').style.display = 'none';
-      document.getElementById('face-success').style.display = 'flex';
-      document.getElementById('camera-wrap').className = 'camera-wrap done';
-      setTimeout(() => {
-        closeFaceModal();
-        registrarPonto();
-      }, 900);
+    camState='scanning'; document.getElementById('camera-wrap').classList.add('scanning'); document.getElementById('scan-line').style.display='block'; document.getElementById('btn-camera-action').textContent='⏳ Verificando...'; document.getElementById('btn-camera-action').className='btn-camera scanning'; document.getElementById('btn-camera-action').disabled=true;
+    setTimeout(async () => {
+      camState='done'; stopCam(); document.getElementById('scan-line').style.display='none'; document.getElementById('cam-video').style.display='none'; document.getElementById('cam-placeholder').style.display='none'; document.getElementById('face-success').style.display='flex'; document.getElementById('camera-wrap').className='camera-wrap done';
+      setTimeout(async () => { closeFaceModal(); await registrarPonto(); }, 900);
     }, 2400);
   }
 }
-
-function stopCam() {
-  if (camStream) { camStream.getTracks().forEach(t=>t.stop()); camStream=null; }
-  const vid = document.getElementById('cam-video');
-  if (vid) { vid.srcObject=null; }
-}
-
-function registrarPonto() {
-  const reg = {
-    id: uid(),
-    colaboradorId: selectedColab.id,
-    colaboradorNome: selectedColab.nome,
-    posto: selectedColab.posto,
-    tipo: pendingTipo,
-    timestamp: Date.now()
-  };
+function stopCam() { if(camStream){ camStream.getTracks().forEach(t=>t.stop()); camStream=null; } const vid=document.getElementById('cam-video'); if(vid) vid.srcObject=null; }
+async function registrarPonto() {
+  const reg = { id: uid(), colaboradorId: selectedColab.id, colaboradorNome: selectedColab.nome, posto: selectedColab.posto, tipo: pendingTipo, timestamp: Date.now() };
   registros.unshift(reg);
-  saveRegistros();
+  await salvarRegistroFirestore(reg);
   showFeedback(pendingTipo, selectedColab.nome);
-  selectedColab = null;
-  pendingTipo = null;
+  selectedColab = null; pendingTipo = null;
   document.getElementById('ponto-btns').style.display = 'none';
   renderColabPonto();
 }
-
 function showFeedback(tipo, nome) {
   const el = document.getElementById('feedback-banner');
   el.className = 'feedback ' + tipo;
-  el.innerHTML = `
-    <div class="feedback-title">${tipo==='entrada'?'✅ Entrada registrada!':'🚪 Saída registrada!'}</div>
-    <div class="feedback-sub">${esc(nome)} &nbsp;·&nbsp; ${fmtHora(Date.now())}</div>
-  `;
+  el.innerHTML = `<div class="feedback-title">${tipo==='entrada'?'✅ Entrada registrada!':'🚪 Saída registrada!'}</div><div class="feedback-sub">${esc(nome)} &nbsp;·&nbsp; ${fmtHora(Date.now())}</div>`;
   el.style.display = 'block';
-  clearTimeout(el._timer);
-  el._timer = setTimeout(()=>{ el.style.display='none'; }, 4500);
+  clearTimeout(el._timer); el._timer = setTimeout(()=>{ el.style.display='none'; }, 4500);
+}
+
+// ─── RENDER: LISTA PONTO ──────────────────────────────────────────────────────
+function renderColabPonto() {
+  const isAdmin = currentUser?.role === 'admin';
+  let ativos = colaboradores.filter(c=>c.ativo);
+  if (!isAdmin && currentUser) {
+    const nomeUser = currentUser.nome;
+    const mine = ativos.find(c => c.nome.toLowerCase() === nomeUser.toLowerCase());
+    ativos = mine ? [mine] : ativos;
+  }
+  const container = document.getElementById('colab-list-ponto');
+  container.innerHTML = '';
+  ativos.forEach(c => {
+    const ult = ultimoReg(c.id);
+    const isSelected = selectedColab?.id === c.id;
+    const div = document.createElement('div');
+    div.className = 'colab-item' + (isSelected ? ' selected' : '');
+    div.onclick = () => { selectedColab = selectedColab?.id === c.id ? null : c; document.getElementById('ponto-btns').style.display = selectedColab ? 'grid' : 'none'; renderColabPonto(); };
+    div.innerHTML = `<div class="avatar" style="background:${avatarColor(c.nome)}">${c.nome.charAt(0)}</div><div><div class="colab-name">${esc(c.nome)}</div><div class="colab-posto">📍 ${esc(c.posto)}</div></div>${ult ? `<div class="status-tag"><span class="${ult.tipo==='entrada'?'tag-in':'tag-out'}">${ult.tipo==='entrada'?'▲ DENTRO':'▼ FORA'}</span><div class="status-time">${fmtHora(ult.timestamp)}</div></div>` : '<div class="status-tag"><span style="color:var(--muted);font-size:12px">–</span></div>'}`;
+    container.appendChild(div);
+  });
 }
 
 // ─── RENDER: HISTÓRICO ────────────────────────────────────────────────────────
@@ -1419,194 +1223,93 @@ function updatePostoFilter() {
   const postos = [...new Set(colaboradores.map(c=>c.posto))].sort();
   const sel = document.getElementById('f-posto');
   const val = sel.value;
-  sel.innerHTML = '<option value="">Todos os postos</option>' +
-    postos.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('');
+  sel.innerHTML = '<option value="">Todos os postos</option>' + postos.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('');
   sel.value = val;
 }
 
-function clearFilters() {
-  ['f-nome','f-posto','f-tipo','f-data'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.value='';
-  });
-  histPage=1; renderHistorico();
-}
-
+function clearFilters() { ['f-nome','f-posto','f-tipo','f-data'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; }); histPage=1; renderHistorico(); }
 let _filtrados = [];
-function renderHistorico() {
-  histPage = 1;
-  _renderHistTabla();
-}
-
-function changePage(delta) {
-  const pages = Math.ceil(_filtrados.length/POR_PAGINA);
-  histPage = Math.max(1, Math.min(pages, histPage+delta));
-  _renderHistTabla();
-}
-
+function renderHistorico() { histPage=1; _renderHistTabla(); }
+function changePage(delta) { const pages=Math.ceil(_filtrados.length/POR_PAGINA); histPage=Math.max(1,Math.min(pages,histPage+delta)); _renderHistTabla(); }
 function _renderHistTabla() {
-  const nome  = (document.getElementById('f-nome')?.value||'').toLowerCase();
-  const posto = document.getElementById('f-posto')?.value||'';
-  const tipo  = document.getElementById('f-tipo')?.value||'';
-  const data  = document.getElementById('f-data')?.value||'';
-
-  // Colaborador só vê os próprios registros
-  const isAdmin = currentUser?.role === 'admin';
-  const nomeUser = currentUser?.nome || '';
-
+  const nome= (document.getElementById('f-nome')?.value||'').toLowerCase(); const posto=document.getElementById('f-posto')?.value||''; const tipo=document.getElementById('f-tipo')?.value||''; const data=document.getElementById('f-data')?.value||'';
+  const isAdmin = currentUser?.role === 'admin'; const nomeUser = currentUser?.nome || '';
   _filtrados = registros.filter(r => {
-    const dataReg = fmtData(r.timestamp);
-    const dataFlt = data ? new Date(data+'T00:00:00').toLocaleDateString('pt-BR') : '';
-    const passaFiltro = (
-      (!nome  || r.colaboradorNome.toLowerCase().includes(nome)) &&
-      (!posto || r.posto===posto) &&
-      (!tipo  || r.tipo===tipo) &&
-      (!data  || dataReg===dataFlt)
-    );
-    // Se não é admin: filtra pelo próprio nome
-    if (!isAdmin) {
-      return passaFiltro && r.colaboradorNome.toLowerCase() === nomeUser.toLowerCase();
-    }
-    return passaFiltro;
+    const dataReg = fmtData(r.timestamp); const dataFlt = data ? new Date(data+'T00:00:00').toLocaleDateString('pt-BR') : '';
+    const passa = (!nome || r.colaboradorNome.toLowerCase().includes(nome)) && (!posto || r.posto===posto) && (!tipo || r.tipo===tipo) && (!data || dataReg===dataFlt);
+    if (!isAdmin) return passa && r.colaboradorNome.toLowerCase() === nomeUser.toLowerCase();
+    return passa;
   });
-
-  const total = _filtrados.length;
-  const pages = Math.max(1, Math.ceil(total/POR_PAGINA));
-  histPage = Math.min(histPage, pages);
+  const total = _filtrados.length; const pages = Math.max(1, Math.ceil(total/POR_PAGINA)); histPage = Math.min(histPage, pages);
   const slice = _filtrados.slice((histPage-1)*POR_PAGINA, histPage*POR_PAGINA);
-
   document.getElementById('filter-count').textContent = `${total} registro(s) encontrado(s)`;
-
   const tbody = document.getElementById('hist-tbody');
-  if (!slice.length) {
-    tbody.innerHTML = '<tr class="empty-row"><td colspan="5">Nenhum registro encontrado</td></tr>';
-  } else {
-    tbody.innerHTML = slice.map(r=>`
-      <tr>
-        <td class="td-data">${fmtData(r.timestamp)}</td>
-        <td class="td-hora">${fmtHora(r.timestamp)}</td>
-        <td class="td-nome">${esc(r.colaboradorNome)}</td>
-        <td class="td-posto">${esc(r.posto)}</td>
-        <td><span class="tipo-tag ${r.tipo==='entrada'?'tipo-entrada':'tipo-saida'}">
-          ${r.tipo==='entrada'?'▲ ENTRADA':'▼ SAÍDA'}
-        </span></td>
-      </tr>
-    `).join('');
-  }
-
+  if (!slice.length) tbody.innerHTML = '<tr class="empty-row"><td colspan="5">Nenhum registro encontrado</td></tr>';
+  else tbody.innerHTML = slice.map(r=>`<tr><td class="td-data">${fmtData(r.timestamp)}</td><td class="td-hora">${fmtHora(r.timestamp)}</td><td class="td-nome">${esc(r.colaboradorNome)}</td><td class="td-posto">${esc(r.posto)}</td><td><span class="tipo-tag ${r.tipo==='entrada'?'tipo-entrada':'tipo-saida'}">${r.tipo==='entrada'?'▲ ENTRADA':'▼ SAÍDA'}</span></td></tr>`).join('');
   const pagEl = document.getElementById('pagination');
-  if (pages>1) {
-    pagEl.style.display='flex';
-    document.getElementById('page-info').textContent=`Pág ${histPage} de ${pages}`;
-    document.getElementById('btn-prev').disabled=(histPage===1);
-    document.getElementById('btn-next').disabled=(histPage===pages);
-  } else { pagEl.style.display='none'; }
+  if (pages>1) { pagEl.style.display='flex'; document.getElementById('page-info').textContent=`Pág ${histPage} de ${pages}`; document.getElementById('btn-prev').disabled=(histPage===1); document.getElementById('btn-next').disabled=(histPage===pages); }
+  else pagEl.style.display='none';
 }
 
-// ─── RENDER: COLABORADORES ────────────────────────────────────────────────────
+// ─── RENDER: COLABORADORES (ADMIN) ────────────────────────────────────────────
 function renderColaboradores() {
+  if (currentUser?.role !== 'admin') return;
   const busca = (document.getElementById('f-busca-colab')?.value||'').toLowerCase();
-  const lista = colaboradores.filter(c=>
-    c.nome.toLowerCase().includes(busca) || c.posto.toLowerCase().includes(busca)
-  );
-
+  const lista = colaboradores.filter(c=> c.nome.toLowerCase().includes(busca) || c.posto.toLowerCase().includes(busca));
   const container = document.getElementById('colab-admin-list');
-  if (!lista.length) {
-    container.innerHTML = '<p style="color:var(--muted);text-align:center;padding:32px">Nenhum colaborador encontrado</p>';
-    return;
-  }
-
+  if (!lista.length) { container.innerHTML = '<p style="color:var(--muted);text-align:center;padding:32px">Nenhum colaborador encontrado</p>'; return; }
   container.innerHTML = lista.map(c=>`
     <div class="colab-admin-item ${c.ativo?'':'inactive'}">
-      <div class="avatar" style="background:${c.ativo?avatarColor(c.nome):'var(--surface2)'};${c.ativo?'':'color:var(--muted)'}">${c.nome.charAt(0)}</div>
-      <div class="colab-admin-info">
-        <div class="colab-name">
-          ${esc(c.nome)}
-          ${!c.ativo?'<span class="inactive-badge">INATIVO</span>':''}
-        </div>
-        <div class="colab-posto">📍 ${esc(c.posto)}</div>
-      </div>
-      <div class="colab-admin-actions">
-        ${c.ativo ? `
-          <button class="btn-edit" onclick="editarColaborador('${c.id}')">✏️ Editar</button>
-          <button class="btn-del"  onclick="confirmarDel('${c.id}')">🗑️</button>
-        ` : `
-          <button class="btn-reativar" onclick="reativarColaborador('${c.id}')">↩️ Reativar</button>
-        `}
-      </div>
+      <div class="avatar" style="background:${c.ativo?avatarColor(c.nome):'var(--surface2)'}">${c.nome.charAt(0)}</div>
+      <div class="colab-admin-info"><div class="colab-name">${esc(c.nome)}${!c.ativo?'<span class="inactive-badge">INATIVO</span>':''}</div><div class="colab-posto">📍 ${esc(c.posto)}</div></div>
+      <div class="colab-admin-actions">${c.ativo ? `<button class="btn-edit" onclick="editarColaborador('${c.id}')">✏️ Editar</button><button class="btn-del" onclick="confirmarDel('${c.id}')">🗑️</button>` : `<button class="btn-reativar" onclick="reativarColaborador('${c.id}')">↩️ Reativar</button>`}</div>
     </div>
   `).join('');
 }
 
-function salvarColaborador() {
-  const nome  = document.getElementById('f-colab-nome').value.trim();
+async function salvarColaborador() {
+  const nome = document.getElementById('f-colab-nome').value.trim();
   const posto = document.getElementById('f-colab-posto').value.trim();
   if (!nome || !posto) return;
-
   if (editId) {
-    colaboradores = colaboradores.map(c=> c.id===editId ? {...c, nome, posto} : c);
+    const index = colaboradores.findIndex(c=>c.id===editId);
+    if (index!==-1) { colaboradores[index] = {...colaboradores[index], nome, posto}; await atualizarColabFirestore(colaboradores[index]); }
     cancelarEdicao();
   } else {
-    colaboradores.push({ id: uid(), nome, posto, ativo: true });
+    const novo = { id: uid(), nome, posto, ativo: true };
+    colaboradores.push(novo); await salvarColabFirestore(novo);
   }
-  saveColabs();
-  document.getElementById('f-colab-nome').value='';
-  document.getElementById('f-colab-posto').value='';
+  document.getElementById('f-colab-nome').value=''; document.getElementById('f-colab-posto').value='';
   renderAll();
 }
 
-function editarColaborador(id) {
-  const c = colaboradores.find(c=>c.id===id);
-  if (!c) return;
-  editId = id;
-  document.getElementById('f-colab-nome').value = c.nome;
-  document.getElementById('f-colab-posto').value = c.posto;
-  document.getElementById('form-title').textContent = '✏️ Editando Colaborador';
-  document.getElementById('btn-salvar').textContent = '💾 Salvar Alterações';
-  document.getElementById('btn-cancelar-edit').style.display='inline-block';
-  document.getElementById('form-card').classList.add('editing');
-  document.getElementById('f-colab-nome').focus();
-  window.scrollTo({top:0,behavior:'smooth'});
+function editarColaborador(id) { const c=colaboradores.find(c=>c.id===id); if(!c)return; editId=id; document.getElementById('f-colab-nome').value=c.nome; document.getElementById('f-colab-posto').value=c.posto; document.getElementById('form-title').textContent='✏️ Editando Colaborador'; document.getElementById('btn-salvar').textContent='💾 Salvar Alterações'; document.getElementById('btn-cancelar-edit').style.display='inline-block'; document.getElementById('form-card').classList.add('editing'); }
+function cancelarEdicao() { editId=null; document.getElementById('f-colab-nome').value=''; document.getElementById('f-colab-posto').value=''; document.getElementById('form-title').textContent='➕ Novo Colaborador'; document.getElementById('btn-salvar').textContent='✅ Adicionar'; document.getElementById('btn-cancelar-edit').style.display='none'; document.getElementById('form-card').classList.remove('editing'); }
+function confirmarDel(id) { delTargetId=id; document.getElementById('del-overlay').style.display='flex'; }
+async function confirmarExclusao() { const idx=colaboradores.findIndex(c=>c.id===delTargetId); if(idx!==-1){ colaboradores[idx].ativo=false; await atualizarColabFirestore(colaboradores[idx]); } delTargetId=null; document.getElementById('del-overlay').style.display='none'; renderAll(); }
+async function reativarColaborador(id) { const idx=colaboradores.findIndex(c=>c.id===id); if(idx!==-1){ colaboradores[idx].ativo=true; await atualizarColabFirestore(colaboradores[idx]); } renderAll(); }
+
+function renderAll() { renderColabPonto(); if (currentUser?.role === 'admin') renderColaboradores(); updatePostoFilter(); _renderHistTabla(); }
+
+// ─── TABS ────────────────────────────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  if (id==='historico') { updatePostoFilter(); renderHistorico(); }
+  if (id==='usuarios') renderUsuarios();
 }
 
-function cancelarEdicao() {
-  editId=null;
-  document.getElementById('f-colab-nome').value='';
-  document.getElementById('f-colab-posto').value='';
-  document.getElementById('form-title').textContent = '➕ Novo Colaborador';
-  document.getElementById('btn-salvar').textContent = '✅ Adicionar';
-  document.getElementById('btn-cancelar-edit').style.display='none';
-  document.getElementById('form-card').classList.remove('editing');
-}
+// ─── RELÓGIO ─────────────────────────────────────────────────────────────────
+function tickClock() { const now=new Date(); document.getElementById('clock').textContent=now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); document.getElementById('clock-date').textContent=now.toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}); }
+setInterval(tickClock,1000); tickClock();
 
-function confirmarDel(id) {
-  delTargetId = id;
-  document.getElementById('del-overlay').style.display='flex';
-}
-
-function confirmarExclusao() {
-  colaboradores = colaboradores.map(c=> c.id===delTargetId ? {...c, ativo:false} : c);
-  saveColabs();
-  delTargetId=null;
-  document.getElementById('del-overlay').style.display='none';
-  renderAll();
-}
-
-function reativarColaborador(id) {
-  colaboradores = colaboradores.map(c=> c.id===id ? {...c, ativo:true} : c);
-  saveColabs();
-  renderAll();
-}
-
-// ─── RENDER ALL ───────────────────────────────────────────────────────────────
-function renderAll() {
-  renderColabPonto();
-  if (currentUser?.role === 'admin') renderColaboradores();
-  updatePostoFilter();
-  _renderHistTabla();
-}
-
-// ─── INIT ─────────────────────────────────────────────────────────────────────
-checkSession();
+// ─── INIT ────────────────────────────────────────────────────────────────────
+window.onload = () => {
+  carregarDadosFirestore();
+  setTimeout(() => { checkSession(); }, 1000);
+};
 </script>
 </body>
 </html>
