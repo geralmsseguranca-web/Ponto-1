@@ -50,21 +50,21 @@
 
 <style>
 :root {
-  --bg:        #06080f;
-  --surface:   #0c0f1d;
-  --surface2:  #111428;
-  --border:    #1e2a4a;
-  --border2:   #141c35;
-  --accent:    #00d4ff;
-  --accent2:   #7c3aed;
-  --green:     #00ff88;
-  --green-bg:  #001a0d;
-  --red:       #ff3366;
+  --bg:        #09080a;
+  --surface:   #110f13;
+  --surface2:  #19161c;
+  --border:    #f59e0b22;
+  --border2:   #f59e0b14;
+  --accent:    #f59e0b;
+  --accent2:   #b45309;
+  --green:     #22c55e;
+  --green-bg:  #052010;
+  --red:       #ff4466;
   --red-bg:    #1a0010;
-  --text:      #f0f4ff;
-  --muted:     #5a6a9a;
-  --muted2:    #2a3460;
-  --gold:      #ffcc00;
+  --text:      #fef3c7;
+  --muted:     #92856a;
+  --muted2:    #3d3020;
+  --gold:      #fbbf24;
   --font-head: 'Rajdhani', sans-serif;
   --font-body: 'Noto Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
@@ -88,7 +88,7 @@ body::before {
     linear-gradient(90deg, var(--border2) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 100%);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 /* ══════════════════════════════════════════
@@ -209,10 +209,10 @@ body::before {
 ══════════════════════════════════════════ */
 header {
   position: sticky; top: 0; z-index: 100;
-  background: linear-gradient(180deg, #090c1a 0%, #06080fee 100%);
+  background: linear-gradient(180deg, #0d0b0e 0%, #09080aee 100%);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 4px 40px #000a, 0 1px 0 #00d4ff18;
+  box-shadow: 0 4px 40px #000a, 0 1px 0 #f59e0b22;
 }
 
 .header-inner {
@@ -226,9 +226,9 @@ header {
 
 .brand-logo {
   width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  background: linear-gradient(135deg, #b45309, #f59e0b);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 28px #00d4ff55, 0 0 8px #7c3aed44;
+  box-shadow: 0 0 28px #f59e0b55, 0 0 8px #b4530944;
   position: relative; overflow: hidden;
 }
 .brand-logo::after {
@@ -305,7 +305,7 @@ main {
 .clock-time {
   font-family: var(--font-mono);
   font-size: 72px; font-weight: 600; letter-spacing: -2px;
-  background: linear-gradient(135deg, #7c3aed, #00d4ff);
+  background: linear-gradient(135deg, #b45309, #f59e0b, #fbbf24);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   line-height: 1;
 }
@@ -342,8 +342,8 @@ main {
 }
 .colab-item:hover { border-color: var(--accent2); }
 .colab-item.selected {
-  border-color: var(--accent); background: #00d4ff0d;
-  box-shadow: 0 0 30px #00d4ff18;
+  border-color: var(--accent); background: #f59e0b0d;
+  box-shadow: 0 0 30px #f59e0b22;
 }
 .colab-item.selected::before { background: var(--accent); }
 
@@ -445,7 +445,7 @@ main {
 .camera-placeholder p { font-size: 12px; color: var(--muted); }
 .scan-line {
   position:absolute; inset:0; pointer-events:none;
-  background: linear-gradient(180deg, transparent 30%, #00d4ff22 50%, transparent 70%);
+  background: linear-gradient(180deg, transparent 30%, #f59e0b22 50%, transparent 70%);
   animation: scanAnim 1.5s ease-in-out infinite;
 }
 @keyframes scanAnim { 0%,100%{transform:translateY(-100%)} 50%{transform:translateY(100%)} }
@@ -455,12 +455,12 @@ main {
 }
 .face-success .check { font-size: 64px; }
 .btn-camera {
-  background: var(--accent2); color: #fff; border: none;
+  background: var(--accent2); color: #000; border: none;
   border-radius: 12px; padding: 14px 32px; font-size: 16px;
   font-family: var(--font-head); font-weight: 700; cursor: pointer;
-  letter-spacing: 0.5px; transition: all .2s; box-shadow: 0 4px 20px #7c3aed55;
+  letter-spacing: 0.5px; transition: all .2s; box-shadow: 0 4px 20px #f59e0b55;
 }
-.btn-camera:hover { background: #6d28d9; box-shadow: 0 6px 28px #7c3aed88; }
+.btn-camera:hover { background: #f59e0b; box-shadow: 0 6px 28px #f59e0b88; }
 .btn-camera:disabled { background: var(--surface2); color: var(--muted); cursor:wait; box-shadow:none; }
 .btn-camera.scanning { background: var(--surface2); color: var(--green); }
 .btn-cancel {
@@ -490,10 +490,10 @@ main {
   display: flex; align-items: center; gap: 0;
   background: var(--surface2); border: 1.5px solid var(--accent);
   border-radius: 50px; overflow: hidden;
-  box-shadow: 0 0 0 4px #00d4ff10; transition: box-shadow .2s;
+  box-shadow: 0 0 0 4px #f59e0b10; transition: box-shadow .2s;
 }
 .date-range-chip:focus-within {
-  box-shadow: 0 0 0 4px #00d4ff25;
+  box-shadow: 0 0 0 4px #f59e0b25;
 }
 .drc-icon {
   padding: 0 10px 0 16px; font-size: 15px; flex-shrink: 0;
@@ -543,8 +543,8 @@ main {
   cursor: pointer; transition: all .18s; white-space: nowrap;
   letter-spacing: 0.3px;
 }
-.drc-chip:hover { border-color: var(--accent); color: var(--accent); background: #00d4ff10; }
-.drc-chip.active { background: #00d4ff20; border-color: var(--accent); color: var(--accent); }
+.drc-chip:hover { border-color: var(--accent); color: var(--accent); background: #f59e0b10; }
+.drc-chip.active { background: #f59e0b20; border-color: var(--accent); color: var(--accent); }
 @media(max-width:600px) {
   .date-range-chip { border-radius: 16px; }
   .drc-sep { padding: 0 6px; }
@@ -564,15 +564,15 @@ main {
   margin-top: 16px; -webkit-overflow-scrolling: touch;
 }
 table { width: 100%; border-collapse: collapse; }
-thead tr { background: #040610; }
+thead tr { background: #0c0a0e; }
 th {
   padding: 13px 16px; text-align: left; font-family: var(--font-head);
   font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--muted);
   text-transform: uppercase;
 }
 td { padding: 12px 16px; font-size: 14px; border-top: 1px solid var(--border2); }
-tbody tr:nth-child(even) { background: #08091a; }
-tbody tr:hover { background: #0e1030; }
+tbody tr:nth-child(even) { background: #100d12; }
+tbody tr:hover { background: #1a1520; }
 .td-nome { font-weight: 600; color: var(--text); }
 .td-hora { font-family: var(--font-mono); font-size: 13px; color: var(--text); }
 .td-data { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
@@ -608,14 +608,14 @@ tbody tr:hover { background: #0e1030; }
 .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .form-row .input { flex: 1; min-width: 200px; }
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
-  color: #fff; border: none; border-radius: 10px;
+  background: linear-gradient(135deg, #b45309, #f59e0b);
+  color: #000; border: none; border-radius: 10px;
   padding: 12px 24px; font-family: var(--font-head); font-size: 16px;
   font-weight: 700; cursor: pointer; letter-spacing: 0.5px;
-  transition: all .2s; box-shadow: 0 4px 20px #7c3aed44;
+  transition: all .2s; box-shadow: 0 4px 20px #f59e0b44;
   white-space: nowrap;
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px #00d4ff55; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px #f59e0b66; }
 .btn-primary:disabled { background: var(--surface2); color: var(--muted); transform:none; box-shadow:none; }
 .btn-secondary {
   background: var(--surface2); border: 1px solid var(--border);
@@ -633,10 +633,10 @@ tbody tr:hover { background: #0e1030; }
 .colab-admin-info { flex: 1; }
 .colab-admin-actions { display: flex; gap: 8px; flex-shrink: 0; }
 .btn-edit {
-  background: #00d4ff18; border: 1px solid #00d4ff44; color: #00d4ff;
+  background: #f59e0b18; border: 1px solid #f59e0b44; color: #f59e0b;
   border-radius: 8px; padding: 7px 14px; cursor: pointer; font-size: 13px; transition: all .2s;
 }
-.btn-edit:hover { background: #00d4ff33; }
+.btn-edit:hover { background: #f59e0b33; }
 .btn-del {
   background: #ff336622; border: 1px solid #ff336644; color: var(--red);
   border-radius: 8px; padding: 7px 14px; cursor: pointer; font-size: 13px; transition: all .2s;
@@ -660,7 +660,7 @@ tbody tr:hover { background: #0e1030; }
 .confirm-modal h3 { font-family: var(--font-head); font-size: 22px; margin: 12px 0 8px; }
 .confirm-modal p  { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
 .confirm-btns { display: flex; gap: 12px; justify-content: center; }
-.card.editing { border-color: var(--accent); box-shadow: 0 0 30px #00d4ff22; }
+.card.editing { border-color: var(--accent); box-shadow: 0 0 30px #f59e0b22; }
 
 /* ══════════════════════════════════════════
    GESTÃO DE USUÁRIOS (ABA ADMIN)
@@ -692,9 +692,9 @@ tbody tr:hover { background: #0e1030; }
 }
 
 .info-box {
-  background: #100a1e; border: 1px solid #7c3aed44;
+  background: #1a1100; border: 1px solid #f59e0b44;
   border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;
-  font-size: 13px; color: #c4b5fd; line-height: 1.6;
+  font-size: 13px; color: #fcd34d; line-height: 1.6;
 }
 .info-box strong { color: var(--accent); }
 
@@ -926,13 +926,13 @@ footer {
 }
 .btn-pa-entrar {
   width: 100%;
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
-  color: #fff; border: none; border-radius: 12px;
+  background: linear-gradient(135deg, #b45309, #f59e0b);
+  color: #000; border: none; border-radius: 12px;
   padding: 16px; font-family: var(--font-head); font-size: 18px;
   font-weight: 700; cursor: pointer; letter-spacing: 1px;
-  transition: all .2s; box-shadow: 0 4px 20px #0ea5e933;
+  transition: all .2s; box-shadow: 0 4px 20px #f59e0b33;
 }
-.btn-pa-entrar:hover { transform: translateY(-2px); box-shadow: 0 8px 32px #0ea5e955; }
+.btn-pa-entrar:hover { transform: translateY(-2px); box-shadow: 0 8px 32px #f59e0b55; }
 
 .pa-error-msg {
   background: var(--red-bg); border: 1px solid #dc262655;
@@ -1160,7 +1160,7 @@ footer {
   font-family: var(--font-head); font-size: 14px; font-weight: 700;
   cursor: pointer; letter-spacing: 0.5px; transition: all .2s; white-space: nowrap;
 }
-.btn-dash-refresh:hover { border-color: var(--accent); background: #0ea5e915; }
+.btn-dash-refresh:hover { border-color: var(--accent); background: #f59e0b15; }
 
 .dash-stats {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
@@ -1176,9 +1176,9 @@ footer {
   content:''; position:absolute; inset:0;
   background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, transparent 60%);
 }
-.dash-stat-card.total  { background:#0c1e36; border-color:#1e40af55; }
-.dash-stat-card.dentro { background: var(--green-bg); border-color:#16a34a55; }
-.dash-stat-card.ausente{ background: var(--red-bg);   border-color:#dc262655; }
+.dash-stat-card.total  { background:#1a1100; border-color:#f59e0b33; }
+.dash-stat-card.dentro { background: var(--green-bg); border-color:#22c55e44; }
+.dash-stat-card.ausente{ background: var(--red-bg);   border-color:#ff446655; }
 
 .dash-stat-num {
   font-family: var(--font-head); font-size: 42px; font-weight: 700; line-height: 1;
@@ -1294,8 +1294,8 @@ footer {
 .step-badge {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-mono); font-size: 11px; font-weight: 600;
-  color: var(--accent); background: #0ea5e915;
-  border: 1px solid #0ea5e933; border-radius: 6px;
+  color: var(--accent); background: #f59e0b15;
+  border: 1px solid #f59e0b33; border-radius: 6px;
   padding: 4px 12px; margin-bottom: 14px;
   letter-spacing: 1px; text-transform: uppercase;
 }
@@ -1324,7 +1324,7 @@ footer {
 }
 .instr-list li .num {
   width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-  background: var(--accent2); color: #fff;
+  background: var(--accent2); color: #000;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-mono); font-size: 11px; font-weight: 700;
   margin-top: 1px;
@@ -1333,13 +1333,13 @@ footer {
 .code-inline {
   display: inline-block;
   font-family: var(--font-mono); font-size: 12px;
-  background: #0c1e36; border: 1px solid var(--border);
+  background: #1a1100; border: 1px solid var(--border);
   color: var(--accent); border-radius: 5px; padding: 1px 7px;
 }
 .code-block {
   font-family: var(--font-mono); font-size: 12px;
-  background: #040c18; border: 1px solid var(--border);
-  color: #7dd3fc; border-radius: 10px; padding: 14px 16px;
+  background: #100d00; border: 1px solid var(--border);
+  color: #fcd34d; border-radius: 10px; padding: 14px 16px;
   margin: 10px 0; line-height: 1.7; white-space: pre; overflow-x: auto;
 }
 .highlight { color: var(--gold); }
@@ -1354,7 +1354,7 @@ footer {
 }
 .fb-field input {
   width: 100%;
-  background: #040c18; border: 1px solid var(--border);
+  background: #100d00; border: 1px solid var(--border);
   border-radius: 10px; color: var(--accent);
   padding: 10px 14px; font-size: 13px;
   font-family: var(--font-mono); outline: none;
@@ -1382,13 +1382,13 @@ footer {
 }
 .setup-nav-info { font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
 .btn-setup-next {
-  background: linear-gradient(135deg, var(--accent2), var(--accent));
-  color: #fff; border: none; border-radius: 10px;
+  background: linear-gradient(135deg, #b45309, #f59e0b);
+  color: #000; border: none; border-radius: 10px;
   padding: 12px 28px; font-family: var(--font-head); font-size: 16px;
   font-weight: 700; cursor: pointer; letter-spacing: 0.5px;
-  transition: all .2s; box-shadow: 0 4px 16px #0ea5e933;
+  transition: all .2s; box-shadow: 0 4px 16px #f59e0b33;
 }
-.btn-setup-next:hover { transform: translateY(-1px); box-shadow: 0 6px 24px #0ea5e955; }
+.btn-setup-next:hover { transform: translateY(-1px); box-shadow: 0 6px 24px #f59e0b55; }
 .btn-setup-next.green-btn {
   background: linear-gradient(135deg, #14532d, #16a34a);
   box-shadow: 0 4px 16px #22c55e33;
@@ -1460,10 +1460,18 @@ footer {
 .ft-obs-save{margin-top:5px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);color:var(--accent);border-radius:7px;padding:5px 14px;font-size:.75rem;font-weight:700;cursor:pointer}
 .ft-obs-save:hover{background:rgba(0,212,255,.2)}
 .ft-btn-del{background:rgba(255,50,50,.08);border:1px solid rgba(255,50,50,.2);color:var(--red);border-radius:10px;padding:8px 12px;font-size:.8rem;cursor:pointer}
+.ftv-card-btns{display:flex;gap:8px;margin-top:10px}
+.ftv-btn-edit{flex:1;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);color:var(--accent);border-radius:10px;padding:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s}
+.ftv-btn-edit:hover{background:rgba(0,212,255,.18)}
+.ftv-btn-del{background:rgba(255,50,50,.08);border:1px solid rgba(255,50,50,.22);color:var(--red);border-radius:10px;padding:8px 14px;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s}
+.ftv-btn-del:hover{background:rgba(255,50,50,.18)}
 .ft-btn-edit-motivo{flex:1;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);color:#c084fc;border-radius:10px;padding:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s}
 .ft-btn-edit-motivo:hover{background:rgba(124,58,237,.2)}
 .ft-btn-edit-horario{flex:1;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);color:var(--accent);border-radius:10px;padding:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s}
 .ft-btn-edit-horario:hover{background:rgba(0,212,255,.15)}
+.ft-btn-edit-data{flex:1;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);color:#fbbf24;border-radius:10px;padding:8px;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s}
+.ft-btn-edit-data:hover{background:rgba(251,191,36,.18)}
+.ft-qe-data-row input[type=datetime-local]{flex:1;min-width:180px;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:8px 10px;font-size:.82rem;color-scheme:dark;width:100%}
 .ft-quick-edit{display:none;margin-top:10px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px;animation:fadeUp .2s ease}
 .ft-quick-edit.open{display:block}
 .ft-quick-edit-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -2217,6 +2225,7 @@ footer {
           oninput="renderColaboradores()" style="flex:1;margin-bottom:0"/>
         <button class="btn-secondary" onclick="repararVinculos()" title="Vincula automaticamente usuários sem colaboradorId pelo nome" style="white-space:nowrap;font-size:13px">🔧 Reparar Vínculos</button>
         <button class="btn-secondary" onclick="exportarCredenciais()" title="Exportar lista de usuários e senhas" style="white-space:nowrap;font-size:13px;background:linear-gradient(135deg,#7c3aed,#00d4ff);color:#fff;border:none">📋 Exportar Credenciais</button>
+        <button class="btn-secondary" onclick="exportarCadastrosPDF()" title="Gerar PDF com todos os cadastros para impressão" style="white-space:nowrap;font-size:13px;background:linear-gradient(135deg,#dc2626,#f97316);color:#fff;border:none">🖨️ PDF Cadastros</button>
       </div>
       <div class="colab-admin-list" id="colab-admin-list"></div>
     </div>
@@ -2305,13 +2314,24 @@ footer {
         <select id="ft-filter-status" onchange="ftRenderLista()">
           <option value="">Todos os status</option>
           <option value="pendente">⏳ Pendentes</option>
-          <option value="enviada">✅ Enviadas</option>
         </select>
         <select id="ft-filter-colab" onchange="ftRenderLista()"><option value="">Todos os colaboradores</option></select>
         <input type="date" id="ft-filter-data-ini" onchange="ftRenderLista()" title="Data inicial"/>
         <input type="date" id="ft-filter-data-fim" onchange="ftRenderLista()" title="Data final"/>
         <button class="ft-btn-sync" onclick="ftSyncFirestore()" id="ft-btn-sync">🔄 Sincronizar FT</button>
         <button class="ft-btn-sync" onclick="ftRecuperarDoHistorico()" id="ft-btn-recuperar" title="Varre o histórico de ponto e gera FTs para registros que ainda não possuem lançamento">🔍 Recuperar FTs do histórico</button>
+      </div>
+      <!-- ADICIONAR HORÁRIO RÁPIDO -->
+      <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;background:var(--surface);border:1px solid rgba(0,212,255,.2);border-radius:12px;padding:10px 14px;">
+        <span style="font-size:.78rem;font-weight:700;color:var(--accent);white-space:nowrap;font-family:var(--font-mono)">🕐 Novo horário:</span>
+        <input type="text" id="ft-ger-horario-input-top" placeholder="Ex: 08:00 – 17:00" maxlength="30"
+          style="flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:8px 10px;font-size:.82rem;outline:none;"
+          onkeydown="if(event.key==='Enter')ftGerAdicionarHorarioTop()"
+          onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"/>
+        <button onclick="ftGerAdicionarHorarioTop()"
+          style="background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.35);color:var(--accent);border-radius:8px;padding:8px 16px;font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap;">
+          + Adicionar
+        </button>
       </div>
       <div class="ft-export-row">
         <button class="ft-btn-export ft-btn-export-pdf" onclick="ftExportarPDF()">🖨️ Exportar PDF</button>
@@ -2378,6 +2398,10 @@ footer {
         <input type="date" id="ftv-filter-data-fim" onchange="renderFTValidadas()" title="Data final"/>
         <button class="ft-btn-sync" onclick="renderFTValidadas()">🔄 Atualizar visão</button>
       </div>
+      <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+        <button onclick="ftvExportarPDF()" style="flex:1;min-width:140px;padding:9px 16px;background:linear-gradient(135deg,#dc2626,#f97316);color:#fff;border:none;border-radius:10px;font-size:.82rem;font-weight:700;cursor:pointer;">🖨️ Exportar PDF</button>
+        <button onclick="ftvExportarExcel()" style="flex:1;min-width:140px;padding:9px 16px;background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff;border:none;border-radius:10px;font-size:.82rem;font-weight:700;cursor:pointer;">📊 Exportar Excel</button>
+      </div>
       <div id="ftv-lista-wrap">
         <div class="ft-empty" id="ftv-empty-msg">
           <span style="font-size:2.5rem">✅</span>
@@ -2413,6 +2437,32 @@ footer {
       <div class="ft-modal-btns">
         <button class="ft-btn-cancel" onclick="ftModalFechar()">Cancelar</button>
         <button class="ft-btn-salvar" onclick="ftModalSalvar()">💾 Salvar e Enviar FT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL EDITAR FT VALIDADA -->
+  <div id="ftv-edit-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:910;align-items:center;justify-content:center;padding:16px;">
+    <div class="ft-modal-box">
+      <div class="ft-modal-title">✏️ Editar FT Validada</div>
+      <div class="ft-modal-sub" id="ftv-edit-sub" style="color:var(--accent);margin-bottom:10px"></div>
+      <input type="hidden" id="ftv-edit-id">
+      <div style="background:rgba(255,200,0,.08);border:1px solid rgba(255,200,0,.25);border-radius:10px;padding:10px 12px;font-size:.8rem;color:var(--gold);margin-bottom:14px">
+        ⚠️ Você está editando uma FT já validada. As alterações serão salvas no Firebase.
+      </div>
+      <div class="ft-field"><label>📍 Posto <span class="ft-req">*</span></label>
+        <select id="ftv-edit-posto"><option value="">-- Selecione --</option></select></div>
+      <div class="ft-field"><label>💬 Motivo <span class="ft-req">*</span></label>
+        <select id="ftv-edit-motivo"><option value="">-- Selecione --</option></select></div>
+      <div class="ft-field"><label>🕐 Horário <span class="ft-req">*</span></label>
+        <select id="ftv-edit-horario"><option value="">-- Selecione --</option></select></div>
+      <div class="ft-field"><label>💰 Valor (R$)</label>
+        <input type="number" id="ftv-edit-valor" min="0" step="0.01" placeholder="0,00"></div>
+      <div class="ft-field"><label>📝 Observação</label>
+        <input type="text" id="ftv-edit-obs" placeholder="Informações adicionais..." maxlength="200"></div>
+      <div class="ft-modal-btns">
+        <button class="ft-btn-cancel" onclick="ftvEditarFechar()">Cancelar</button>
+        <button class="ft-btn-salvar" onclick="ftvEditarSalvar()">💾 Salvar Alterações</button>
       </div>
     </div>
   </div>
@@ -2554,8 +2604,12 @@ footer {
 // ─── ESTADO ───────────────────────────────────────────────────────────────────
 let colaboradores  = [];
 let registros      = [];
-let usuarios       = [];       // lista de acessos
 let postos         = [];       // lista de postos customizados
+// Carrega usuários do localStorage imediatamente para que o login funcione
+// mesmo antes do Firebase responder
+let usuarios = (function(){
+  try { return JSON.parse(localStorage.getItem('ms_usuarios')) || []; } catch(e){ return []; }
+})();
 let currentUser    = null;     // usuário logado
 let selectedColab  = null;
 let pendingTipo    = null;
@@ -2842,17 +2896,22 @@ function fazerLogin() {
   }
 
   // Se Firebase disponível, busca usuários direto do banco (sempre atualizado)
-  if (window._firebaseReady) {
+  if (window._firebaseReady && window._db) {
     window._fbGet(window._fbRef(window._db, 'usuarios')).then(snap => {
       const data = snap.val();
       const lista = data ? fromFirebaseObj(data) : [];
-      if (lista.length) usuarios = lista;
+      if (lista.length) {
+        usuarios = lista;
+        localStorage.setItem('ms_usuarios', JSON.stringify(usuarios));
+      }
       tentarLogin(lista.length ? lista : usuarios);
     }).catch(() => {
+      // Firebase falhou — usa o que já tem no localStorage
       tentarLogin(usuarios);
     });
   } else {
-    setTimeout(() => tentarLogin(usuarios), 600);
+    // Firebase ainda não pronto — usa localStorage carregado no boot
+    tentarLogin(usuarios);
   }
 }
 
@@ -3445,7 +3504,16 @@ function registrarPonto() {
   registros.unshift(reg);
   saveUmRegistro(reg); // salva somente este registro — não sobrescreve os demais
   showFeedback(pendingTipo, selectedColab.nome, pendingLocalizacao);
-  if (typeof window.ftGerarDePonto === 'function') window.ftGerarDePonto(reg);
+  // Chama ftGerarDePonto com retry — garante execução mesmo se o módulo FT ainda estiver inicializando
+  (function _chamarFtGerarDePonto(reg, tentativas) {
+    if (typeof window.ftGerarDePonto === 'function') {
+      window.ftGerarDePonto(reg);
+    } else if ((tentativas || 0) < 10) {
+      setTimeout(function() {
+        _chamarFtGerarDePonto(reg, (tentativas || 0) + 1);
+      }, 300);
+    }
+  })(reg, 0);
   selectedColab = null;
   pendingTipo = null;
   pendingLocalizacao = null;
@@ -3886,11 +3954,44 @@ var FT_HORARIOS=JSON.parse(localStorage.getItem(LS_HORARIOS)||'null')||FT_HORARI
 function ftSalvarMotivos(){localStorage.setItem(LS_MOTIVOS,JSON.stringify(FT_MOTIVOS));}
 function ftSalvarHorarios(){localStorage.setItem(LS_HORARIOS,JSON.stringify(FT_HORARIOS));}
 
+// ══ CORTE DE CONTABILIZAÇÃO FT ═══════════════════════════════════════
+// Mantém configurações (motivos, horários, padrões, postos, colaboradores e histórico)
+// e considera apenas lançamentos FT a partir de 16/05/2026.
+var FT_DATA_INICIAL_CONTAGEM='2026-05-16';
+function ftDataISO(valor){
+  return String(valor||'').slice(0,10);
+}
+function ftDataDoRegistro(reg){
+  if(reg&&reg.timestamp)return ftLocalISO(reg.timestamp).slice(0,10);
+  return ftDataISO(reg&&reg.dataHora);
+}
+function ftDentroPeriodoFT(dataISO){
+  return !dataISO||dataISO>=FT_DATA_INICIAL_CONTAGEM;
+}
+function ftFTDentroPeriodo(ft){
+  return ftDentroPeriodoFT(ftDataDoRegistro(ft));
+}
+function ftAplicarDataInicialNosFiltros(){
+  ['ft-filter-data-ini','ftv-filter-data-ini'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el)return;
+    if(!el.value)el.value=FT_DATA_INICIAL_CONTAGEM;
+    el.min=FT_DATA_INICIAL_CONTAGEM;
+  });
+}
+function ftLimparLancamentosAntigosLocal(){
+  var antes=ftS.ftsLocal.length;
+  ftS.ftsLocal=ftS.ftsLocal.filter(ftFTDentroPeriodo);
+  if(ftS.ftsLocal.length!==antes)ftSalvarLocal();
+}
+
 function ftInit(){
   ftS.ftsLocal=JSON.parse(localStorage.getItem(LS_LOCAL)||'[]');
   ftS.padroes=JSON.parse(localStorage.getItem(LS_PAD)||'[]');
+  ftLimparLancamentosAntigosLocal();
   ftGerRenderMotivos();
   ftGerRenderHorarios();
+  ftAplicarDataInicialNosFiltros();
   ftConectar();
 }
 
@@ -3916,9 +4017,16 @@ function ftConectar(){
 }
 
 function detectarTurno(ts){
-  var h=new Date(ts).getHours(),melhor=null,dist=999;
-  TURNOS.forEach(function(t){var d=Math.abs(t.i-h);if(d>12)d=24-d;if(d<dist){dist=d;melhor=t;}});
-  return dist<=2?melhor:null;
+  var h=new Date(ts).getHours(),m=new Date(ts).getMinutes();
+  var hf=h+m/60; // hora fracionada para melhor precisão
+  var melhor=null,dist=999;
+  TURNOS.forEach(function(t){
+    var d=Math.abs(t.i-hf);
+    if(d>12)d=24-d;
+    if(d<dist){dist=d;melhor=t;}
+  });
+  // Tolerância ampliada para 3h — cobre chegadas adiantadas/atrasadas
+  return dist<=3?melhor:null;
 }
 
 function ftAprenderComHistorico(fts){
@@ -3932,7 +4040,12 @@ function ftAprenderComHistorico(fts){
     if(ft.motivo)map[k].motivo=ft.motivo;
   });
   ftS.padroes=Object.values(map).map(function(p){
-    var conf=Math.min(100,Math.round((p.ocorrencias/3)*100));
+    // Escala mais conservadora: 5 ocorrências para 83%, 10 para 100%
+    // Assim 3 ocorrências = 50% (não dispara auto-validação)
+    var confBase=Math.min(100,Math.round((p.ocorrencias/10)*100));
+    // Bônus por completude do padrão (cada campo preenchido = +5 pontos, máx +15)
+    var bonus=(p.posto?5:0)+(p.motivo?5:0)+(p.valores.length>0?5:0);
+    var conf=Math.min(100,confBase+bonus);
     var vm=p.valores.length?p.valores.reduce(function(a,b){return a+b;},0)/p.valores.length:0;
     return Object.assign({},p,{confianca:conf,valorMedio:parseFloat(vm.toFixed(2))});
   }).sort(function(a,b){return b.ocorrencias-a.ocorrencias;});
@@ -3944,21 +4057,36 @@ function ftBuscarPadrao(reg){
   var turno=detectarTurno(reg.timestamp);
   var nome=(reg.colaboradorNome||'').trim().toLowerCase();
   var posto=(reg.posto||'').trim();
+
+  // 1º — match exato: nome + posto + turno
   var match=ftS.padroes.find(function(p){
     return (p.colabNome||'').trim().toLowerCase()===nome&&
            (!p.posto||!posto||p.posto===posto)&&
            (turno?p.horario===turno.t:true);
   });
-  if(!match){
-    match=ftS.padroes.find(function(p){return (p.colabNome||'').trim().toLowerCase()===nome;});
-    if(match)match=Object.assign({},match,{confianca:Math.floor(match.confianca*0.6)});
-  }
-  return{padrao:match||null,turnoDetectado:turno};
+  if(match)return{padrao:match,turnoDetectado:turno};
+
+  // 2º — match nome + posto (sem turno): penalidade leve -15%
+  var m2=ftS.padroes.find(function(p){
+    return (p.colabNome||'').trim().toLowerCase()===nome&&
+           (!p.posto||!posto||p.posto===posto);
+  });
+  if(m2)return{padrao:Object.assign({},m2,{confianca:Math.floor(m2.confianca*0.85)}),turnoDetectado:turno};
+
+  // 3º — match só nome: penalidade maior -40%
+  var m3=ftS.padroes.find(function(p){
+    return (p.colabNome||'').trim().toLowerCase()===nome;
+  });
+  if(m3)return{padrao:Object.assign({},m3,{confianca:Math.floor(m3.confianca*0.60)}),turnoDetectado:turno};
+
+  return{padrao:null,turnoDetectado:turno};
 }
 
 window.ftGerarDePonto=function(reg){
-  if(reg.tipo!=='entrada')return;
-  if(ftS.ftsLocal.some(function(f){return f.pontoId===reg.id;}))return;
+  if(reg.tipo!=='entrada'){console.log('[FT] Ignorado: tipo não é entrada',reg.tipo);return;}
+  var dataReg=ftDataDoRegistro(reg);
+  if(!ftDentroPeriodoFT(dataReg)){console.warn('[FT] Ignorado: data fora do período FT. Data do registro:',dataReg,'Período a partir de:',FT_DATA_INICIAL_CONTAGEM);return;}
+  if(ftS.ftsLocal.some(function(f){return f.pontoId===reg.id;})){console.log('[FT] Ignorado: FT já existe para este pontoId',reg.id);return;}
   var r=ftBuscarPadrao(reg),pad=r.padrao,turno=r.turnoDetectado;
   var ft={id:ftUid(),pontoId:reg.id,colaboradorId:reg.colaboradorId||'',colaboradorNome:reg.colaboradorNome||'',
     posto:(pad&&pad.posto)||reg.posto||'',horario:(pad&&pad.horario)||(turno?turno.t:''),
@@ -3970,47 +4098,116 @@ window.ftGerarDePonto=function(reg){
   ftS.ftsLocal.unshift(ft);ftSalvarLocal();ftRenderLista();ftUpdateStats();
   var ok=ft.posto&&ft.horario&&ft.motivo&&ft.valor;
   ftToast(ft.confianca>=80&&ok?'🤖 FT gerada: '+ft.colaboradorNome:'📋 FT pendente: '+ft.colaboradorNome,ft.confianca>=80&&ok?'success':'warn');
+
+  // ── SINCRONIZAÇÃO IMEDIATA: abre a aba FT Automática ao gerar a FT ──────────
+  var tabFtBtn = document.getElementById('tab-btn-ft');
+  if (tabFtBtn && tabFtBtn.style.display !== 'none') {
+    // Pequeno delay para o feedback de ponto aparecer antes de mudar de aba
+    setTimeout(function() {
+      showTab('ft-auto', tabFtBtn);
+    }, 1200);
+  }
 };
 
 function ftEnviarParaFirestore(ftId){
+  // Busca a FT mais atualizada da memória
   var ft=ftS.ftsLocal.find(function(f){return f.id===ftId;});
-  if(!ft)return;
+  if(!ft){ftToast('⚠️ FT não encontrada.','error');return;}
+
+  // Validação de campos obrigatórios
   var faltando=[];
   if(!ft.posto)faltando.push('Posto');
   if(!ft.horario)faltando.push('Horário');
   if(!ft.motivo)faltando.push('Motivo');
   if(!ft.colaboradorNome)faltando.push('Colaborador');
-  if(faltando.length){ftToast('⚠️ Preencha: '+faltando.join(', '),'error');ftModalAbrir(ftId);return;}
-  if(!window._firebaseReady||!window._db){ftToast('⚠️ Firebase não disponível. Salvo localmente.','warn');return;}
-  var origemValidacao=(ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo)?'inteligencia':'adm';
-  var payload={id:ftUid(),posto:ft.posto,motivo:ft.motivo,horario:ft.horario,substituto:ft.colaboradorNome,
-    quemFaltou:null,observacao:ft.observacao||null,valor:parseFloat(ft.valor)||0,
-    dataHora:ft.dataHora,criadoEm:new Date().toISOString(),status:'enviada',enviadoEm:new Date().toISOString(),
-    confianca:ft.confianca||0,autoNome:!!ft.autoNome,autoPosto:!!ft.autoPosto,autoHorario:!!ft.autoHorario,autoMotivo:!!ft.autoMotivo,autoValor:!!ft.autoValor,
-    validadoPor:origemValidacao,validadoEm:new Date().toISOString(),_origem:'ponto-automatico',_pontoId:ft.pontoId||ft.id};
-  window._fbSet(window._fbRef(window._db,'ft_registros/'+payload.id),payload)
+  if(faltando.length){
+    ftToast('⚠️ Preencha: '+faltando.join(', '),'error');
+    setTimeout(function(){ftModalAbrir(ftId);},300);
+    return;
+  }
+
+  var todosCamposAuto=ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor;
+  var origemValidacao=(ft.confianca>=80&&todosCamposAuto)?'inteligencia':'adm';
+  var fbId=ftUid();
+  var agora=new Date().toISOString();
+  var payload={
+    id:fbId,
+    posto:ft.posto,motivo:ft.motivo,horario:ft.horario,
+    substituto:ft.colaboradorNome,quemFaltou:null,
+    observacao:ft.observacao||null,
+    valor:parseFloat(ft.valor)||0,
+    dataHora:ft.dataHora,
+    criadoEm:agora,status:'enviada',enviadoEm:agora,
+    confianca:ft.confianca||0,
+    autoNome:!!ft.autoNome,autoPosto:!!ft.autoPosto,
+    autoHorario:!!ft.autoHorario,autoMotivo:!!ft.autoMotivo,autoValor:!!ft.autoValor,
+    validadoPor:origemValidacao,validadoEm:agora,
+    _origem:'ponto-automatico',_pontoId:ft.pontoId||ft.id
+  };
+
+  // Marca como enviada localmente imediatamente (optimistic update)
+  ftS.ftsLocal=ftS.ftsLocal.map(function(f){
+    if(f.id!==ftId)return f;
+    return Object.assign({},f,{status:'enviada',enviadoEm:agora,_fbId:fbId,validadoPor:origemValidacao,validadoEm:agora});
+  });
+  ftSalvarLocal();
+  ftRenderLista();
+  if(typeof window.renderFTValidadas==='function')window.renderFTValidadas();
+  ftUpdateStats();
+
+  // Envia ao Firebase (sem bloquear a UI)
+  if(!window._firebaseReady||!window._db){
+    ftToast('✅ FT validada localmente! (Firebase offline — sincronize depois)','warn');
+    return;
+  }
+  window._fbSet(window._fbRef(window._db,'ft_registros/'+fbId),payload)
     .then(function(){
-      ftS.ftsLocal=ftS.ftsLocal.map(function(f){return f.id===ftId?Object.assign({},f,{status:'enviada',enviadoEm:new Date().toISOString(),_fbId:payload.id,validadoPor:origemValidacao,validadoEm:new Date().toISOString()}):f;});
-      ftSalvarLocal();ftRenderLista();if(typeof window.renderFTValidadas==='function')window.renderFTValidadas();ftUpdateStats();ftToast('✅ FT enviada!','success');
-    }).catch(function(e){console.error(e);ftToast('❌ Erro ao enviar FT: '+e.message,'error');});
+      ftToast('✅ FT enviada e salva no Firebase!','success');
+    })
+    .catch(function(e){
+      console.error('[FT] Erro ao gravar no Firebase:',e);
+      ftToast('⚠️ FT validada localmente mas erro no Firebase: '+e.message,'warn');
+    });
 }
 
 window.ftSyncFirestore=function(){
   if(ftS.sync)return;
   if(!window._firebaseReady||!window._db){ftToast('⚠️ Firebase não disponível.','warn');return;}
+  if(!ftS.dbFT){ftConectar();ftToast('⏳ Conectando ao Firebase...','warn');return;}
   ftS.sync=true;
   var btn=document.getElementById('ft-btn-sync');
   if(btn){btn.textContent='⏳ Sincronizando...';btn.classList.add('syncing');}
-  window._fbGet(window._fbRef(window._db,'ft_registros'))
+  // Timeout de segurança: libera o lock após 15s mesmo se a Promise travar
+  var syncTimeout=setTimeout(function(){
+    if(ftS.sync){ftS.sync=false;if(btn){btn.textContent='🔄 Sincronizar FT';btn.classList.remove('syncing');}}
+  },15000);
+
+  // 1º — Envia ftsLocal pendentes que ainda não estão no Firebase
+  var pendentesParaEnviar=ftS.ftsLocal.filter(function(f){
+    return !ftS.ftFirestore.some(function(fb){return fb.id===f.id||fb._fbId===f.id;});
+  });
+  var uploads=pendentesParaEnviar.map(function(f){
+    var fbKey=f.id;
+    return window._fbSet(window._fbRef(window._db,'ft_registros/'+fbKey),Object.assign({},f,{_fbId:fbKey}));
+  });
+
+  Promise.all(uploads)
+    .then(function(){
+      // 2º — Lê o estado atualizado do Firebase
+      return window._fbGet(window._fbRef(window._db,'ft_registros'));
+    })
     .then(function(snap){
       var data=snap.val();
       ftS.ftFirestore=data?Object.values(data):[];
       ftAprenderComHistorico(ftS.ftFirestore);
       ftRenderLista();if(typeof window.renderFTValidadas==='function')window.renderFTValidadas();ftUpdateStats();
-      ftToast('🔄 '+ftS.padroes.length+' padrões aprendidos','success');
+      var msg=pendentesParaEnviar.length>0
+        ?'✅ '+pendentesParaEnviar.length+' FT(s) enviada(s) · '+ftS.padroes.length+' padrões'
+        :'🔄 Sincronizado · '+ftS.padroes.length+' padrões';
+      ftToast(msg,'success');
     })
     .catch(function(e){ftToast('❌ Erro na sincronização: '+e.message,'error');})
-    .finally(function(){ftS.sync=false;if(btn){btn.textContent='🔄 Sincronizar FT';btn.classList.remove('syncing');}});
+    .finally(function(){clearTimeout(syncTimeout);ftS.sync=false;if(btn){btn.textContent='🔄 Sincronizar FT';btn.classList.remove('syncing');}});
 };
 
 window.ftRenderLista=function(){
@@ -4020,17 +4217,34 @@ window.ftRenderLista=function(){
   var fColab=(document.getElementById('ft-filter-colab')||{}).value||'';
   var fDtIni=(document.getElementById('ft-filter-data-ini')||{}).value||'';
   var fDtFim=(document.getElementById('ft-filter-data-fim')||{}).value||'';
+  // Filtro por currentUser: não-admin só vê as próprias FTs
+  var isAdminFT=(typeof currentUser!=='undefined')&&currentUser&&currentUser.role==='admin';
+  var myColabIdFT=(typeof currentUser!=='undefined')&&currentUser
+    ?(currentUser.colaboradorId||null):null;
+  var myColabNomeFT=(typeof currentUser!=='undefined')&&currentUser
+    ?((currentUser.nome||'').toLowerCase()):null;
+
   var selC=document.getElementById('ft-filter-colab');
-  if(selC){var ns=[...new Set(ftS.ftsLocal.map(function(f){return f.colaboradorNome;}))].sort(),cv=selC.value;
+  // Monta lista de nomes permitidos para o filtro dropdown
+  var baseFiltro=ftS.ftsLocal.filter(function(f){
+    if(!isAdminFT){
+      if(myColabIdFT)return f.colaboradorId===myColabIdFT;
+      if(myColabNomeFT)return (f.colaboradorNome||'').toLowerCase()===myColabNomeFT;
+      return false;
+    }
+    return true;
+  });
+  if(selC){var ns=[...new Set(baseFiltro.map(function(f){return f.colaboradorNome;}))].sort(),cv=selC.value;
     selC.innerHTML='<option value="">Todos os colaboradores</option>'+ns.map(function(n){return '<option value="'+esc(n)+'"'+(n===cv?' selected':'')+'>'+esc(n)+'</option>';}).join('');}
-  var lf=ftS.ftsLocal.filter(function(f){
+  var lf=baseFiltro.filter(function(f){
+    var d=ftDataDoRegistro(f);
+    if(!ftDentroPeriodoFT(d))return false;
+    // FTs validadas/enviadas não aparecem aqui — ficam apenas na aba FTs Validadas
+    if(f.status==='enviada')return false;
     if(fStatus&&f.status!==fStatus)return false;
     if(fColab&&f.colaboradorNome!==fColab)return false;
-    if(fDtIni||fDtFim){
-      var d=(f.dataHora||'').slice(0,10);
-      if(fDtIni&&d<fDtIni)return false;
-      if(fDtFim&&d>fDtFim)return false;
-    }
+    if(fDtIni&&d<fDtIni)return false;
+    if(fDtFim&&d>fDtFim)return false;
     return true;
   });
   lf.sort(function(a,b){return(b.criadoEm||b.dataHora||'').localeCompare(a.criadoEm||a.dataHora||'');});
@@ -4046,16 +4260,21 @@ window.ftRenderLista=function(){
     chips.push(ft.valor?'<span class="ft-chip ok">💰 R$ '+parseFloat(ft.valor).toFixed(2).replace('.',',')+'</span>':'<span class="ft-chip warn">💰 Valor pendente</span>');
     var ok=ft.posto&&ft.horario&&ft.motivo,btns='';
     if(ft.status==='pendente'){
+      btns+='<button class="ft-btn-edit-data" onclick="ftQuickEditAbrir(\''+ft.id+'\',\'data\')">📅 Data</button>';
       btns+='<button class="ft-btn-edit-motivo" onclick="ftQuickEditAbrir(\''+ft.id+'\',\'motivo\')">💬 Motivo</button>';
       btns+='<button class="ft-btn-edit-horario" onclick="ftQuickEditAbrir(\''+ft.id+'\',\'horario\')">🕐 Horário</button>';
       btns+='<button class="ft-btn-completar" onclick="ftModalAbrir(\''+ft.id+'\')">✏️ Completar</button>';
-      btns+='<button class="ft-btn-enviar'+(ok?'':' ft-btn-enviar-incompleto')+'" onclick="ftEnviarParaFirestore(\''+ft.id+'\')">📤 Enviar FT</button>';
+      btns+='<button class="ft-btn-enviar" onclick="ftModalAbrir(\''+ft.id+'\')">✅ Validar e Enviar FT</button>';
     }else{btns+='<span class="ft-chip ok" style="padding:8px 14px">✅ Enviada '+(ft.enviadoEm?new Date(ft.enviadoEm).toLocaleDateString('pt-BR'):'')+'</span>';}
     btns+='<button class="ft-btn-del" onclick="ftDeletar(\''+ft.id+'\')" title="Remover">🗑</button>';
     var dt=ft.dataHora?new Date(ft.dataHora).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):'';
     var motivoOpts=FT_MOTIVOS.map(function(m){return '<option value="'+esc(m)+'"'+(ft.motivo===m?' selected':'')+'>'+esc(m)+'</option>';}).join('');
     var horarioOpts=FT_HORARIOS.map(function(h){return '<option value="'+esc(h)+'"'+(ft.horario===h?' selected':'')+'>'+esc(h)+'</option>';}).join('');
+    var dtLocal=ft.dataHora?ft.dataHora.slice(0,16):'';
     var quickEdit='<div class="ft-quick-edit" id="ft-qe-'+ft.id+'">'
+      +'<div class="ft-quick-edit-row ft-qe-data-row" id="ft-qe-data-row-'+ft.id+'" style="display:none">'
+      +'<input type="datetime-local" id="ft-qe-inp-data-'+ft.id+'" value="'+dtLocal+'" />'
+      +'</div>'
       +'<div class="ft-quick-edit-row" id="ft-qe-motivo-row-'+ft.id+'" style="display:none">'
       +'<select id="ft-qe-sel-motivo-'+ft.id+'"><option value="">-- Motivo --</option>'+motivoOpts+'</select>'
       +'</div>'
@@ -4086,8 +4305,18 @@ window.renderFTValidadas=function(){
   var fColab=(document.getElementById('ftv-filter-colab')||{}).value||'';
   var fDtIni=(document.getElementById('ftv-filter-data-ini')||{}).value||'';
   var fDtFim=(document.getElementById('ftv-filter-data-fim')||{}).value||'';
+  // Filtro por currentUser: não-admin só vê as próprias FTs
+  var isAdminFTV=(typeof currentUser!=='undefined')&&currentUser&&currentUser.role==='admin';
+  var myColabIdFTV=(typeof currentUser!=='undefined')&&currentUser?(currentUser.colaboradorId||null):null;
+  var myColabNomeFTV=(typeof currentUser!=='undefined')&&currentUser?((currentUser.nome||'').toLowerCase()):null;
   var base=(ftS.ftFirestore&&ftS.ftFirestore.length?ftS.ftFirestore:ftS.ftsLocal).filter(function(f){
-    return (f.status||'enviada')==='enviada';
+    if((f.status||'enviada')!=='enviada'||!ftFTDentroPeriodo(f))return false;
+    if(!isAdminFTV){
+      if(myColabIdFTV)return f.colaboradorId===myColabIdFTV;
+      if(myColabNomeFTV)return (f.colaboradorNome||'').toLowerCase()===myColabNomeFTV;
+      return false;
+    }
+    return true;
   });
   var selC=document.getElementById('ftv-filter-colab');
   if(selC){
@@ -4096,18 +4325,24 @@ window.renderFTValidadas=function(){
   }
   var lf=base.filter(function(ft){
     var nome=ft.substituto||ft.colaboradorNome||'';
-    var origem=ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo)?'inteligencia':'adm');
-    var d=((ft.validadoEm||ft.enviadoEm||ft.criadoEm||ft.dataHora)||'').slice(0,10);
+    var origem=ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm');
+    // Usa timestamp original do ponto para filtrar por data (corrige registros antigos)
+    var regOrig=(typeof registros!=='undefined'&&ft._pontoId)
+      ? registros.find(function(r){return r.id===ft._pontoId;})
+      : null;
+    var d=regOrig
+      ? ftLocalISO(regOrig.timestamp).slice(0,10)
+      : ((ft.dataHora||ft.criadoEm||'')).slice(0,10);
     if(fOrigem&&origem!==fOrigem)return false;
     if(fColab&&nome!==fColab)return false;
     if(fDtIni&&d<fDtIni)return false;
     if(fDtFim&&d>fDtFim)return false;
     return true;
-  }).sort(function(a,b){return(b.validadoEm||b.enviadoEm||b.criadoEm||b.dataHora||'').localeCompare(a.validadoEm||a.enviadoEm||a.criadoEm||a.dataHora||'');});
+  }).sort(function(a,b){return(b.dataHora||b.criadoEm||'').localeCompare(a.dataHora||a.criadoEm||'');});
 
   var total=lf.length;
-  var adm=lf.filter(function(ft){return (ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo)?'inteligencia':'adm'))==='adm';}).length;
-  var ia=lf.filter(function(ft){return (ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo)?'inteligencia':'adm'))==='inteligencia';}).length;
+  var adm=lf.filter(function(ft){return (ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm'))==='adm';}).length;
+  var ia=lf.filter(function(ft){return (ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm'))==='inteligencia';}).length;
   var elTotal=document.getElementById('ftv-stat-total'),elAdm=document.getElementById('ftv-stat-adm'),elIa=document.getElementById('ftv-stat-ia');
   if(elTotal)elTotal.textContent=total;
   if(elAdm)elAdm.textContent=adm;
@@ -4118,26 +4353,336 @@ window.renderFTValidadas=function(){
 
   lista.innerHTML=lf.map(function(ft){
     var nome=ft.substituto||ft.colaboradorNome||'Sem colaborador';
-    var origem=(ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo)?'inteligencia':'adm'))==='inteligencia' ? '🤖 Inteligência' : '🛡️ ADM';
-    var dataRef=ft.validadoEm||ft.enviadoEm||ft.criadoEm||ft.dataHora||'';
+    var origemVal=(ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm'));
+    var origem=origemVal==='inteligencia' ? '🤖 Inteligência' : '🛡️ ADM';
+    // Busca a data original do ponto pelo pontoId nos registros em memória
+    // Isso corrige registros antigos onde dataHora foi gravado como hora da validação
+    var regOriginal=(typeof registros!=='undefined'&&ft._pontoId)
+      ? registros.find(function(r){return r.id===ft._pontoId;})
+      : null;
+    var dataRef=regOriginal
+      ? ftLocalISO(regOriginal.timestamp)   // data real do ponto
+      : (ft.dataHora||ft.criadoEm||'');    // fallback: campo do Firebase
     var dt=dataRef?new Date(dataRef).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):'—';
+    var dtValidacao=ft.validadoEm||ft.enviadoEm||'';
+    var dtVal=dtValidacao?new Date(dtValidacao).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}):'';
+    var conf=ft.confianca||0;
+    var cc=conf>=80?'#00ff88':conf>=50?'#ffc800':'#ef4444';
     var chips=[];
     chips.push('<span class="ft-chip auto">👤 '+esc(nome)+'</span>');
-    chips.push(ft.posto?'<span class="ft-chip">📍 '+esc(ft.posto)+'</span>':'<span class="ft-chip warn">📍 Sem posto</span>');
-    chips.push(ft.horario?'<span class="ft-chip">🕐 '+esc(ft.horario)+'</span>':'<span class="ft-chip warn">🕐 Sem horário</span>');
-    chips.push(ft.motivo?'<span class="ft-chip">💬 '+esc(ft.motivo)+'</span>':'<span class="ft-chip warn">💬 Sem motivo</span>');
+    chips.push(ft.posto?'<span class="ft-chip '+(ft.autoPosto?'auto':'')+'">📍 '+esc(ft.posto)+'</span>':'<span class="ft-chip warn">📍 Sem posto</span>');
+    chips.push(ft.horario?'<span class="ft-chip '+(ft.autoHorario?'auto':'')+'">🕐 '+esc(ft.horario)+'</span>':'<span class="ft-chip warn">🕐 Sem horário</span>');
+    chips.push(ft.motivo?'<span class="ft-chip '+(ft.autoMotivo?'auto':'')+'">💬 '+esc(ft.motivo)+'</span>':'<span class="ft-chip warn">💬 Sem motivo</span>');
     chips.push('<span class="ft-chip ok">'+origem+'</span>');
     if(ft.valor||ft.valor===0)chips.push('<span class="ft-chip ok">💰 R$ '+parseFloat(ft.valor||0).toFixed(2).replace('.',',')+'</span>');
-    return '<div class="ft-card enviada"><div class="ft-card-top"><div><div class="ft-card-nome">'+esc(nome)+'</div><div class="ft-card-ts">'+dt+'</div></div><span class="ft-card-badge enviada">✅ Validada</span></div>'
+    // Barra de confiança só aparece em FTs validadas pela inteligência
+    var confBar = origemVal==='inteligencia'
+      ? '<div class="ft-conf-bar" style="margin-top:8px" title="Confiança IA: '+conf+'%"><div class="ft-conf-fill" style="width:'+conf+'%;background:'+cc+'"></div></div>'
+        +'<div style="font-size:10px;color:'+cc+';font-family:var(--font-mono);margin-top:2px">🤖 '+conf+'% confiança histórica</div>'
+      : '';
+    var ftId=ft.id||ft._fbId||'';
+    var dtSubLabel = dtVal ? ' &nbsp;·&nbsp; <span style="color:var(--muted);font-size:10px">Validada: '+dtVal+'</span>' : '';
+    return '<div class="ft-card enviada"><div class="ft-card-top"><div><div class="ft-card-nome">'+esc(nome)+'</div><div class="ft-card-ts">📅 '+dt+dtSubLabel+'</div></div><span class="ft-card-badge enviada">✅ Validada</span></div>'
       +'<div class="ft-card-chips" style="margin-top:10px">'+chips.join('')+'</div>'
+      +confBar
       +(ft.observacao?'<div class="ft-obs-wrap" style="margin-top:10px"><div class="ft-obs-textarea" style="min-height:auto">📝 '+esc(ft.observacao)+'</div></div>':'')
+      +'<div class="ftv-card-btns">'
+        +'<button class="ftv-btn-edit" onclick="ftvEditarAbrir(\''+ftId+'\')">✏️ Editar FT</button>'
+        +'<button class="ftv-btn-del" onclick="ftvDeletar(\''+ftId+'\')">🗑️ Excluir</button>'
+      +'</div>'
       +'</div>';
   }).join('');
 };
 
+// ── Exportar FTs Validadas — PDF ─────────────────────────────────────────────
+function ftvGetListaFiltrada(){
+  var origem = (document.getElementById('ftv-filter-origem')||{}).value||'';
+  var colab  = (document.getElementById('ftv-filter-colab')||{}).value||'';
+  var dtIni  = (document.getElementById('ftv-filter-data-ini')||{}).value||'';
+  var dtFim  = (document.getElementById('ftv-filter-data-fim')||{}).value||'';
+
+  var base = [];
+  // Prioriza ftFirestore (dados mais atualizados do Firebase)
+  if(ftS.ftFirestore&&ftS.ftFirestore.length){
+    base = ftS.ftFirestore.slice();
+  }
+  // Adiciona itens locais que não estão no Firebase
+  (ftS.ftsLocal||[]).filter(function(f){ return f.status==='enviada'; }).forEach(function(f){
+    if(!base.find(function(b){return b.id===f.id;})) base.push(f);
+  });
+
+  return base.filter(function(ft){
+    var nomeColab = ft.substituto||ft.colaboradorNome||'';
+    var origemFT  = ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm');
+    var d         = (ft.dataHora||ft.criadoEm||'').slice(0,10);
+    if(origem && origemFT!==origem) return false;
+    if(colab  && nomeColab!==colab) return false;
+    if(dtIni  && d<dtIni) return false;
+    if(dtFim  && d>dtFim) return false;
+    return true;
+  }).sort(function(a,b){
+    return (a.dataHora||a.criadoEm||'').localeCompare(b.dataHora||b.criadoEm||'');
+  });
+}
+
+function ftvFormatarDataHora(str){
+  if(!str) return '—';
+  try{ return new Date(str).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}); }catch(e){return str;}
+}
+
+function ftvFormatarBRL(v){
+  return (parseFloat(v)||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+}
+
+function ftvExportarPDF(){
+  var lf = ftvGetListaFiltrada();
+  if(!lf.length){ ftToast('⚠️ Nenhuma FT para exportar com os filtros atuais.','warn'); return; }
+
+  var colab    = (document.getElementById('ftv-filter-colab')||{}).value||'';
+  var dtIni    = (document.getElementById('ftv-filter-data-ini')||{}).value||'';
+  var dtFim    = (document.getElementById('ftv-filter-data-fim')||{}).value||'';
+  var origem   = (document.getElementById('ftv-filter-origem')||{}).value||'';
+  var dataHoje = new Date().toLocaleDateString('pt-BR');
+  var totalGeral = lf.reduce(function(s,f){ return s+(parseFloat(f.valor)||0); }, 0);
+  var modoColaborador = !!colab;
+
+  // ── Cabeçalho visual ──────────────────────────────────────────────────────
+  var filtrosDesc = [];
+  if(origem) filtrosDesc.push(origem==='adm'?'Validadas pelo ADM':'Validadas pela IA');
+  if(colab)  filtrosDesc.push('Colaborador: '+colab);
+  if(dtIni)  filtrosDesc.push('De: '+new Date(dtIni+'T12:00:00').toLocaleDateString('pt-BR'));
+  if(dtFim)  filtrosDesc.push('Até: '+new Date(dtFim+'T12:00:00').toLocaleDateString('pt-BR'));
+
+  // ── Filtros chips para o header ────────────────────────────────────────────
+  var visao    = modoColaborador ? 'Colaboradores' : 'Todos';
+  var filtroTxt= colab || 'Todos';
+  var periodoTxt = (dtIni||dtFim)
+    ? ((dtIni?new Date(dtIni+'T12:00:00').toLocaleDateString('pt-BR'):'...')+' → '+(dtFim?new Date(dtFim+'T12:00:00').toLocaleDateString('pt-BR'):'...'))
+    : 'Todos os Períodos';
+
+  // ── Cards de resumo ────────────────────────────────────────────────────────
+  var mediaVal = lf.length ? totalGeral/lf.length : 0;
+
+  // ── Corpo: agrupado por colaborador ou tabela geral ───────────────────────
+  var corpoHtml = '';
+
+  if(modoColaborador){
+    // Modo colaborador único — gera seção com declaração de recebimento
+    var linhasTabela = lf.map(function(ft,i){
+      var dtFmt  = ftvFormatarDataHora(ft.dataHora||ft.criadoEm);
+      var valorFmt = ftvFormatarBRL(ft.valor);
+      var origemFT = ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm');
+      var ausente  = ft.ausente||ft.motivo||'—';
+      return '<tr>'
+        +'<td style="text-align:center;color:#64748b;font-size:11px;padding:9px 8px">'+(i+1).toString().padStart(2,'0')+'</td>'
+        +'<td style="padding:9px 10px;color:#1e40af;font-weight:600">'+dtFmt+'</td>'
+        +'<td style="padding:9px 10px">'+esc(ft.posto||'—')+'</td>'
+        +'<td style="padding:9px 10px;color:#d97706">'+esc(ft.motivo||'—')+'</td>'
+        +'<td style="padding:9px 10px;color:#dc2626;font-size:11px">'+esc(ausente)+'</td>'
+        +'<td style="padding:9px 10px;text-align:right;font-weight:700;color:#15803d">'+valorFmt+'</td>'
+        +'</tr>';
+    }).join('');
+
+    corpoHtml = '<div style="margin-bottom:20px">'
+      +'<div style="background:linear-gradient(135deg,#0d3878 0%,#1e3a8a 100%);color:#fff;border-radius:8px;padding:10px 18px;margin-bottom:0;font-size:13px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:8px">'
+      +'<span>👤</span><span>Colaborador: '+esc(colab)+'</span>'
+      +'</div>'
+      +'<table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 8px 8px;overflow:hidden">'
+      +'<thead><tr style="background:#f8fafc">'
+      +'<th style="padding:8px;font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;text-align:center;border-bottom:1px solid #e2e8f0">#</th>'
+      +'<th style="padding:8px;font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #e2e8f0">Data / Hora</th>'
+      +'<th style="padding:8px;font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #e2e8f0">Posto</th>'
+      +'<th style="padding:8px;font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #e2e8f0">Tipo/Motivo</th>'
+      +'<th style="padding:8px;font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #e2e8f0">Ausente</th>'
+      +'<th style="padding:8px;font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #e2e8f0;text-align:right">Valor</th>'
+      +'</tr></thead>'
+      +'<tbody>'+linhasTabela+'</tbody>'
+      +'</table>'
+      +'</div>'
+      // Total a receber
+      +'<div style="background:#fefce8;border:2px solid #d97706;border-radius:8px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:28px">'
+      +'<span style="font-weight:700;font-size:14px;color:#92400e">TOTAL A RECEBER</span>'
+      +'<span style="color:#64748b;font-size:13px">'+lf.length+' lançamento'+(lf.length!==1?'s':'')+'</span>'
+      +'<span style="font-weight:700;font-size:15px;color:#15803d">'+ftvFormatarBRL(totalGeral)+'</span>'
+      +'</div>'
+      // Declaração de recebimento
+      +'<div style="border:1.5px solid #cbd5e1;border-radius:10px;padding:28px 32px;background:#fff;page-break-inside:avoid">'
+      +'<div style="text-align:center;font-size:13px;font-weight:700;color:#1e293b;letter-spacing:.5px;margin-bottom:16px;text-transform:uppercase">Declaração de Recebimento</div>'
+      +'<p style="font-size:12px;color:#3b82f6;text-align:center;line-height:1.7;margin-bottom:32px">'
+      +'Eu, <strong>'+esc(colab)+'</strong>, declaro que estou de acordo com os lançamentos acima, referentes às<br>'
+      +'Folgas Trabalhadas (FT) listadas neste relatório, e confirmo o recebimento dos valores correspondentes.'
+      +'</p>'
+      +'<div style="border-top:1.5px solid #1e293b;width:340px;margin:0 auto 10px"></div>'
+      +'<div style="text-align:center;font-size:11px;color:#64748b">Assinatura do Colaborador: <strong>'+esc(colab)+'</strong></div>'
+      +'<div style="text-align:center;font-size:11px;color:#64748b;margin-top:8px">Data: ________ / ________ / __________</div>'
+      +'</div>';
+
+  } else {
+    // Modo geral — tabela completa agrupada por colaborador
+    var porColab = {};
+    lf.forEach(function(ft){
+      var nome = ft.substituto||ft.colaboradorNome||'Desconhecido';
+      if(!porColab[nome]) porColab[nome] = {fts:[], total:0};
+      porColab[nome].fts.push(ft);
+      porColab[nome].total += parseFloat(ft.valor)||0;
+    });
+
+    Object.keys(porColab).sort().forEach(function(nome){
+      var grupo = porColab[nome];
+      var linhasTabela = grupo.fts.map(function(ft,i){
+        var dtFmt  = ftvFormatarDataHora(ft.dataHora||ft.criadoEm);
+        var valorFmt = ftvFormatarBRL(ft.valor);
+        var origemFT = ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm');
+        return '<tr style="'+(i%2?'background:#f8fafc':'')+'">'
+          +'<td style="text-align:center;color:#64748b;font-size:11px;padding:8px">'+(i+1).toString().padStart(2,'0')+'</td>'
+          +'<td style="padding:8px;color:#1e40af;font-size:12px">'+dtFmt+'</td>'
+          +'<td style="padding:8px;font-size:12px">'+esc(ft.posto||'—')+'</td>'
+          +'<td style="padding:8px;font-size:12px;color:#d97706">'+esc(ft.motivo||'—')+'</td>'
+          +'<td style="padding:8px;font-size:12px">'+esc(ft.horario||'—')+'</td>'
+          +'<td style="padding:8px;text-align:center;font-size:10px"><span style="padding:2px 7px;border-radius:10px;font-weight:700;'+(origemFT==='inteligencia'?'background:#dbeafe;color:#1d4ed8':'background:#dcfce7;color:#15803d')+'">'+( origemFT==='inteligencia'?'IA':'ADM')+'</span></td>'
+          +'<td style="padding:8px;text-align:right;font-weight:700;color:#15803d;font-size:12px">'+valorFmt+'</td>'
+          +'</tr>';
+      }).join('');
+
+      corpoHtml += '<div style="margin-bottom:18px;page-break-inside:avoid">'
+        +'<div style="background:linear-gradient(135deg,#0d3878,#1e3a8a);color:#fff;border-radius:6px 6px 0 0;padding:8px 14px;font-size:12px;font-weight:700">👤 '+esc(nome)+'</div>'
+        +'<table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e2e8f0;border-top:none">'
+        +'<thead><tr style="background:#f1f5f9"><th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:center">#</th><th style="padding:6px 8px;font-size:10px;color:#64748b">Data / Hora</th><th style="padding:6px 8px;font-size:10px;color:#64748b">Posto</th><th style="padding:6px 8px;font-size:10px;color:#64748b">Motivo</th><th style="padding:6px 8px;font-size:10px;color:#64748b">Horário</th><th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:center">Origem</th><th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:right">Valor</th></tr></thead>'
+        +'<tbody>'+linhasTabela
+        +'<tr style="background:#f0fdf4;font-weight:700"><td colspan="6" style="padding:8px;text-align:right;color:#64748b;font-size:12px">Subtotal ('+grupo.fts.length+' FT'+(grupo.fts.length!==1?'s':'')+')</td><td style="padding:8px;text-align:right;color:#15803d;font-size:13px">'+ftvFormatarBRL(grupo.total)+'</td></tr>'
+        +'</tbody></table>'
+        // Área de assinatura por colaborador
+        +'<div style="border:1px solid #e2e8f0;border-top:none;border-radius:0 0 6px 6px;padding:14px 18px;background:#fafafa;display:flex;align-items:flex-end;gap:24px">'
+        +'<div style="flex:1"><div style="border-top:1.5px solid #334155;margin-bottom:5px"></div><div style="font-size:10px;color:#64748b">Assinatura: '+esc(nome)+'</div></div>'
+        +'<div style="font-size:10px;color:#64748b">Data: _______ / _______ / _________</div>'
+        +'</div>'
+        +'</div>';
+    });
+
+    // Totalizador geral
+    corpoHtml += '<div style="background:#f0fdf4;border:2px solid #15803d;border-radius:8px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-top:8px">'
+      +'<span style="font-weight:700;font-size:14px;color:#14532d">TOTAL GERAL</span>'
+      +'<span style="color:#64748b">'+lf.length+' lançamentos</span>'
+      +'<span style="font-weight:700;font-size:16px;color:#15803d">'+ftvFormatarBRL(totalGeral)+'</span>'
+      +'</div>';
+  }
+
+  var html = '<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">'
+    +'<title>Relatório de Lançamentos — Grupo M.S — '+dataHoje+'</title>'
+    +'<style>'
+    +'*{box-sizing:border-box;margin:0;padding:0}'
+    +'body{font-family:"Segoe UI",Arial,sans-serif;background:#f1f5f9;color:#1e293b;padding:28px 32px;font-size:13px}'
+    +'.no-print{} @media print{.no-print{display:none!important}body{padding:12px 16px;background:#fff}}'
+    +'</style></head><body>'
+
+    // Botão imprimir
+    +'<div class="no-print" style="margin-bottom:18px"><button onclick="window.print()" style="padding:10px 24px;background:#0f172a;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;font-weight:600">🖨️ Imprimir / Salvar como PDF</button></div>'
+
+    // Header azul escuro com logo e título
+    +'<div style="background:linear-gradient(135deg,#0a1628 0%,#0d3878 60%,#1e40af 100%);border-radius:12px;padding:22px 28px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div style="display:flex;align-items:center;gap:18px">'
+    // Logo hexagonal SVG
+    +'<svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:56px;height:62px;filter:drop-shadow(0 0 8px rgba(0,200,248,.5))">'
+    +'<defs><linearGradient id="hG" x1="0" y1="0" x2="100" y2="110" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#0d3878"/><stop offset="100%" stop-color="#051225"/></linearGradient>'
+    +'<linearGradient id="hS" x1="0" y1="0" x2="100" y2="110" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#00eaff"/><stop offset="50%" stop-color="#0088cc"/><stop offset="100%" stop-color="#00c8f8"/></linearGradient></defs>'
+    +'<polygon points="50,4 96,28 96,82 50,106 4,82 4,28" fill="url(#hG)" stroke="url(#hS)" stroke-width="2.5"/>'
+    +'<text x="50" y="67" text-anchor="middle" font-family="Arial" font-weight="900" font-size="26" fill="#eef4ff" letter-spacing="-1">P<tspan fill="#00eaff">J</tspan></text>'
+    +'</svg>'
+    +'<div>'
+    +'<div style="color:#00eaff;font-size:18px;font-weight:700;letter-spacing:1px">PJ &nbsp;TECNOLOGIA</div>'
+    +'<div style="color:#7dd3fc;font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-top:2px">E SISTEMAS</div>'
+    +'<div style="border-top:1.5px solid #00c8f8;margin:6px 0 5px;width:120px"></div>'
+    +'<div style="color:#94a3b8;font-size:10px;font-style:italic">Inovação que conecta. Tecnologia que transforma.</div>'
+    +'</div>'
+    +'</div>'
+    +'<div style="text-align:right">'
+    +'<div style="color:#f59e0b;font-size:20px;font-weight:700">Relatório de Lançamentos</div>'
+    +'<div style="color:#94a3b8;font-size:11px;margin-top:4px">PJ Tecnologia e Sistemas &nbsp;|&nbsp; Gerado em: '+dataHoje+'</div>'
+    +'</div>'
+    +'</div>'
+
+    // Chips de filtros
+    +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px">'
+    +['<div style="background:#0f172a;border:1.5px solid #00c8f844;border-radius:8px;padding:8px 14px;text-align:center"><div style="color:#94a3b8;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px">FONTE</div><div style="color:#f59e0b;font-size:13px;font-weight:700">Todos</div></div>',
+      '<div style="background:#0f172a;border:1.5px solid #00c8f844;border-radius:8px;padding:8px 14px;text-align:center"><div style="color:#94a3b8;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px">VISÃO</div><div style="color:#f59e0b;font-size:13px;font-weight:700">'+esc(visao)+'</div></div>',
+      '<div style="background:#0f172a;border:1.5px solid #00c8f844;border-radius:8px;padding:8px 14px;text-align:center"><div style="color:#94a3b8;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px">FILTRO</div><div style="color:#f59e0b;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(filtroTxt)+'</div></div>',
+      '<div style="background:#0f172a;border:1.5px solid #00c8f844;border-radius:8px;padding:8px 14px;text-align:center"><div style="color:#94a3b8;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px">PERÍODO</div><div style="color:#f59e0b;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(periodoTxt)+'</div></div>'
+    ].join('')
+    +'</div>'
+
+    // Cards de resumo
+    +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px">'
+    +'<div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:18px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)">'
+    +'<div style="font-size:28px;font-weight:700;color:#1e40af">'+lf.length+'</div>'
+    +'<div style="font-size:10px;color:#64748b;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px">TOTAL DE FTs</div>'
+    +'</div>'
+    +'<div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:18px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)">'
+    +'<div style="font-size:26px;font-weight:700;color:#f59e0b">'+ftvFormatarBRL(totalGeral)+'</div>'
+    +'<div style="font-size:10px;color:#64748b;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px">VALOR TOTAL</div>'
+    +'</div>'
+    +'<div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:18px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)">'
+    +'<div style="font-size:26px;font-weight:700;color:#1e40af">'+ftvFormatarBRL(mediaVal)+'</div>'
+    +'<div style="font-size:10px;color:#64748b;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px">MÉDIA POR FT</div>'
+    +'</div>'
+    +'</div>'
+
+    // Corpo principal
+    + corpoHtml
+
+    // Rodapé
+    +'<div style="margin-top:24px;text-align:center;color:#94a3b8;font-size:11px;border-top:1px solid #e2e8f0;padding-top:12px">'
+    +'PJ Tecnologia e Sistemas &nbsp;|&nbsp; Sistema de Folga Trabalhada &nbsp;|&nbsp; Pág. 1 / 1'
+    +'</div>'
+    +'</body></html>';
+
+  var win = window.open('','_blank');
+  if(!win){ ftToast('⚠️ Permita pop-ups para abrir o PDF.','warn'); return; }
+  win.document.write(html);
+  win.document.close();
+  setTimeout(function(){ win.focus(); }, 300);
+}
+
+// ── Exportar FTs Validadas — Excel (CSV) ─────────────────────────────────────
+function ftvExportarExcel(){
+  var lf = ftvGetListaFiltrada();
+  if(!lf.length){ ftToast('⚠️ Nenhuma FT para exportar com os filtros atuais.','warn'); return; }
+
+  var csvEsc = function(v){ return '"'+String(v===null||v===undefined?'':v).replace(/"/g,'""')+'"'; };
+
+  var cabecalho = ['Nº','Colaborador','Posto','Data/Hora','Horário','Motivo','Valor (R$)','Ausente','Origem','Validado em'];
+  var linhas = lf.map(function(ft, i){
+    var nome    = ft.substituto||ft.colaboradorNome||'';
+    var dtPonto = ftvFormatarDataHora(ft.dataHora||ft.criadoEm);
+    var dtVal   = ftvFormatarDataHora(ft.validadoEm||ft.enviadoEm||'');
+    var origemFT= ft.validadoPor||((ft.confianca>=80&&ft.autoPosto&&ft.autoHorario&&ft.autoMotivo&&ft.autoValor)?'inteligencia':'adm');
+    var ausente = ft.ausente||ft.motivo||'';
+    return [
+      i+1, nome, ft.posto||'', dtPonto,
+      ft.horario||'', ft.motivo||'',
+      (parseFloat(ft.valor)||0).toFixed(2).replace('.',','),
+      ausente,
+      origemFT==='inteligencia'?'IA':'ADM',
+      dtVal
+    ].map(csvEsc).join(';');
+  });
+
+  var totalVal = lf.reduce(function(s,f){ return s+(parseFloat(f.valor)||0); }, 0);
+  linhas.push(['','','','','','Total',''+totalVal.toFixed(2).replace('.',','),'','',''].map(csvEsc).join(';'));
+
+  var csv = '\uFEFF' + [cabecalho.map(csvEsc).join(';')].concat(linhas).join('\n');
+  var blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  var url  = URL.createObjectURL(blob);
+  var a    = document.createElement('a');
+  var dataHoje = new Date().toLocaleDateString('pt-BR').replace(/\//g,'-');
+  a.href = url; a.download = 'FTs_Validadas_GrupoMS_'+dataHoje+'.csv';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  ftToast('✅ Excel exportado com '+lf.length+' registros!','success');
+}
 function ftUpdateStats(){
-  var p=ftS.ftsLocal.filter(function(f){return f.status==='pendente';}).length;
-  var e=ftS.ftsLocal.filter(function(f){return f.status==='enviada';}).length;
+  var p=ftS.ftsLocal.filter(function(f){return f.status==='pendente'&&ftFTDentroPeriodo(f);}).length;
+  var e=ftS.ftsLocal.filter(function(f){return f.status==='enviada'&&ftFTDentroPeriodo(f);}).length;
   var el1=document.getElementById('ft-stat-pendentes'),el2=document.getElementById('ft-stat-enviadas'),el3=document.getElementById('ft-stat-padroes');
   if(el1)el1.textContent=p;if(el2)el2.textContent=e;if(el3)el3.textContent=ftS.padroes.length;
 }
@@ -4168,12 +4713,123 @@ window.ftModalSalvar=function(){
   var obs=document.getElementById('ft-modal-obs').value;
   if(!posto||!motivo||!horario){ftToast('⚠️ Posto, motivo e horário são obrigatórios.','error');return;}
   ftS.ftsLocal=ftS.ftsLocal.map(function(f){
-    return f.id!==id?f:Object.assign({},f,{posto:posto,motivo:motivo,horario:horario,valor:parseFloat(valor)||0,observacao:obs,autoPosto:true,autoMotivo:true,autoHorario:true});
+    if(f.id!==id)return f;
+    // Preserva flags originais: só marca auto=true se o campo JÁ era auto antes
+    // Se o ADM mudou o valor, o campo passa a ser manual (auto=false)
+    return Object.assign({},f,{
+      posto:posto,    autoPosto:   (f.autoPosto   && posto   === f.posto),
+      motivo:motivo,  autoMotivo:  (f.autoMotivo  && motivo  === f.motivo),
+      horario:horario,autoHorario: (f.autoHorario && horario === f.horario),
+      valor:parseFloat(valor)||0,observacao:obs
+    });
   });
-  ftSalvarLocal();ftModalFechar();ftRenderLista();ftUpdateStats();
+  ftSalvarLocal();
+  ftModalFechar();
+  // ftEnviarParaFirestore cuida de renderizar, atualizar stats e enviar ao Firebase
   ftEnviarParaFirestore(id);
 };
-window.ftDeletar=function(id){ftS.ftsLocal=ftS.ftsLocal.filter(function(f){return f.id!==id;});ftSalvarLocal();ftRenderLista();ftUpdateStats();};
+window.ftDeletar=function(id){
+  if(!confirm('Remover esta FT? Esta ação não pode ser desfeita.')){return;}
+  // Localiza antes de remover para pegar o _fbId caso exista
+  var ft=ftS.ftsLocal.find(function(f){return f.id===id;});
+  var fbId=ft?(ft._fbId||null):null;
+  // Remove da memória local
+  ftS.ftsLocal=ftS.ftsLocal.filter(function(f){return f.id!==id;});
+  ftS.ftFirestore=ftS.ftFirestore.filter(function(f){return f.id!==id&&f._fbId!==id;});
+  ftSalvarLocal();
+  // Remove do Firebase se a FT já foi enviada (tem _fbId)
+  if(fbId&&window._firebaseReady&&window._db){
+    window._fbRemove(window._fbRef(window._db,'ft_registros/'+fbId))
+      .then(function(){ftToast('🗑️ FT removida do Firebase.','success');})
+      .catch(function(e){ftToast('⚠️ Removida localmente. Erro Firebase: '+e.message,'warn');});
+  } else {
+    ftToast('🗑️ FT removida.','success');
+  }
+  ftRenderLista();ftUpdateStats();
+};
+
+// ── EDITAR / EXCLUIR FT VALIDADA ──────────────────────────────────────────────
+window.ftvEditarAbrir=function(ftId){
+  // Busca primeiro no ftFirestore (fonte principal das validadas), depois no ftsLocal
+  var ft=(ftS.ftFirestore&&ftS.ftFirestore.length?ftS.ftFirestore:ftS.ftsLocal)
+    .find(function(f){return (f.id===ftId||f._fbId===ftId);});
+  if(!ft){ftToast('⚠️ FT não encontrada.','error');return;}
+  document.getElementById('ftv-edit-id').value=ftId;
+  document.getElementById('ftv-edit-sub').textContent='Colaborador: '+(ft.substituto||ft.colaboradorNome||'—');
+  // Posto
+  var selP=document.getElementById('ftv-edit-posto');
+  var allP=listaPostosLimpa();
+  selP.innerHTML='<option value="">-- Selecione --</option>'+allP.map(function(p){return '<option value="'+esc(p)+'"'+(ft.posto===p?' selected':'')+'>'+esc(p)+'</option>';}).join('');
+  // Motivo
+  var selM=document.getElementById('ftv-edit-motivo');
+  selM.innerHTML='<option value="">-- Selecione --</option>'+FT_MOTIVOS.map(function(m){return '<option value="'+esc(m)+'"'+(ft.motivo===m?' selected':'')+'>'+esc(m)+'</option>';}).join('');
+  // Horário
+  var selH=document.getElementById('ftv-edit-horario');
+  selH.innerHTML='<option value="">-- Selecione --</option>'+FT_HORARIOS.map(function(h){return '<option value="'+esc(h)+'"'+(ft.horario===h?' selected':'')+'>'+esc(h)+'</option>';}).join('');
+  document.getElementById('ftv-edit-valor').value=ft.valor||'';
+  document.getElementById('ftv-edit-obs').value=ft.observacao||'';
+  document.getElementById('ftv-edit-overlay').style.display='flex';
+};
+window.ftvEditarFechar=function(){document.getElementById('ftv-edit-overlay').style.display='none';};
+window.ftvEditarSalvar=function(){
+  var ftId=document.getElementById('ftv-edit-id').value;
+  var posto=document.getElementById('ftv-edit-posto').value;
+  var motivo=document.getElementById('ftv-edit-motivo').value;
+  var horario=document.getElementById('ftv-edit-horario').value;
+  var valor=document.getElementById('ftv-edit-valor').value;
+  var obs=document.getElementById('ftv-edit-obs').value.trim();
+  if(!posto||!motivo||!horario){ftToast('⚠️ Posto, motivo e horário são obrigatórios.','error');return;}
+  // Atualiza ftsLocal
+  var updated=false;
+  ftS.ftsLocal=ftS.ftsLocal.map(function(f){
+    if(f.id!==ftId&&f._fbId!==ftId)return f;
+    updated=true;
+    return Object.assign({},f,{posto:posto,motivo:motivo,horario:horario,
+      valor:parseFloat(valor)||0,observacao:obs,
+      autoPosto:false,autoMotivo:false,autoHorario:false,
+      validadoPor:'adm',editadoEm:new Date().toISOString()});
+  });
+  // Atualiza também em ftFirestore (memória)
+  ftS.ftFirestore=ftS.ftFirestore.map(function(f){
+    if(f.id!==ftId&&f._fbId!==ftId)return f;
+    updated=true;
+    return Object.assign({},f,{posto:posto,motivo:motivo,horario:horario,
+      valor:parseFloat(valor)||0,observacao:obs,
+      autoPosto:false,autoMotivo:false,autoHorario:false,
+      validadoPor:'adm',editadoEm:new Date().toISOString()});
+  });
+  ftSalvarLocal();
+  // Persiste no Firebase
+  if(window._firebaseReady&&window._db){
+    var updates={posto:posto,motivo:motivo,horario:horario,
+      valor:parseFloat(valor)||0,observacao:obs||null,
+      autoPosto:false,autoMotivo:false,autoHorario:false,
+      validadoPor:'adm',editadoEm:new Date().toISOString()};
+    window._fbUpdate(window._fbRef(window._db,'ft_registros/'+ftId),updates)
+      .then(function(){ftToast('✅ FT atualizada no Firebase!','success');})
+      .catch(function(e){ftToast('⚠️ Salvo localmente. Erro Firebase: '+e.message,'warn');});
+  } else {
+    ftToast('✅ FT atualizada localmente.','success');
+  }
+  ftvEditarFechar();
+  ftRenderLista();if(typeof window.renderFTValidadas==='function')window.renderFTValidadas();ftUpdateStats();
+};
+window.ftvDeletar=function(ftId){
+  if(!confirm('Excluir esta FT validada? Esta ação não pode ser desfeita.')){return;}
+  // Remove de ftsLocal e ftFirestore (memória)
+  ftS.ftsLocal=ftS.ftsLocal.filter(function(f){return f.id!==ftId&&f._fbId!==ftId;});
+  ftS.ftFirestore=ftS.ftFirestore.filter(function(f){return f.id!==ftId&&f._fbId!==ftId;});
+  ftSalvarLocal();
+  // Remove do Firebase
+  if(window._firebaseReady&&window._db){
+    window._fbRemove(window._fbRef(window._db,'ft_registros/'+ftId))
+      .then(function(){ftToast('🗑️ FT excluída do Firebase.','success');})
+      .catch(function(e){ftToast('⚠️ Removido localmente. Erro Firebase: '+e.message,'warn');});
+  } else {
+    ftToast('🗑️ FT removida localmente.','success');
+  }
+  ftRenderLista();if(typeof window.renderFTValidadas==='function')window.renderFTValidadas();ftUpdateStats();
+};
 
 window.ftSalvarObs=function(ftId){
   var el=document.getElementById('ft-obs-'+ftId);
@@ -4188,6 +4844,7 @@ window.ftQuickEditAbrir=function(ftId,campo){
   if(!qe)return;
   var motivoRow=document.getElementById('ft-qe-motivo-row-'+ftId);
   var horarioRow=document.getElementById('ft-qe-horario-row-'+ftId);
+  var dataRow=document.getElementById('ft-qe-data-row-'+ftId);
   // Fechar todos os outros quick-edits abertos
   document.querySelectorAll('.ft-quick-edit.open').forEach(function(el){
     if(el.id!=='ft-qe-'+ftId){el.classList.remove('open');}
@@ -4195,6 +4852,7 @@ window.ftQuickEditAbrir=function(ftId,campo){
   // Mostrar o painel correto
   if(motivoRow) motivoRow.style.display = campo==='motivo' ? 'flex' : 'none';
   if(horarioRow) horarioRow.style.display = campo==='horario' ? 'flex' : 'none';
+  if(dataRow) dataRow.style.display = campo==='data' ? 'flex' : 'none';
   qe.dataset.campo = campo;
   qe.classList.add('open');
 };
@@ -4206,6 +4864,21 @@ window.ftQuickEditSalvar=function(ftId){
   var qe=document.getElementById('ft-qe-'+ftId);
   if(!qe)return;
   var campo=qe.dataset.campo;
+  // Edição de data tem fluxo próprio
+  if(campo==='data'){
+    var inp=document.getElementById('ft-qe-inp-data-'+ftId);
+    var val=inp?inp.value:'';
+    if(!val){ftToast('⚠️ Selecione a data e hora.','warn');return;}
+    // Valida: não permite data futura
+    if(new Date(val)>new Date()){ftToast('⚠️ A data não pode ser no futuro.','warn');return;}
+    ftS.ftsLocal=ftS.ftsLocal.map(function(f){
+      if(f.id!==ftId)return f;
+      return Object.assign({},f,{dataHora:val});
+    });
+    ftSalvarLocal();ftQuickEditFechar(ftId);ftRenderLista();ftUpdateStats();
+    ftToast('✅ Data atualizada!','success');
+    return;
+  }
   var sel=document.getElementById('ft-qe-sel-'+campo+'-'+ftId);
   var val=sel?sel.value:'';
   if(!val){ftToast('⚠️ Selecione uma opção.','warn');return;}
@@ -4213,8 +4886,9 @@ window.ftQuickEditSalvar=function(ftId){
     if(f.id!==ftId)return f;
     var update={};
     update[campo]=val;
-    if(campo==='motivo')update.autoMotivo=true;
-    if(campo==='horario')update.autoHorario=true;
+    // Quick edit é sempre intervenção do ADM → campo NÃO é automático
+    if(campo==='motivo') update.autoMotivo=false;
+    if(campo==='horario')update.autoHorario=false;
     return Object.assign({},f,update);
   });
   ftSalvarLocal();ftQuickEditFechar(ftId);ftRenderLista();ftUpdateStats();
@@ -4230,9 +4904,12 @@ function ftGetFiltrados(){
   var fDtIni=(document.getElementById('ft-filter-data-ini')||{}).value||'';
   var fDtFim=(document.getElementById('ft-filter-data-fim')||{}).value||'';
   return ftS.ftsLocal.filter(function(f){
+    var d=ftDataDoRegistro(f);
+    if(!ftDentroPeriodoFT(d))return false;
     if(fStatus&&f.status!==fStatus)return false;
     if(fColab&&f.colaboradorNome!==fColab)return false;
-    if(fDtIni||fDtFim){var d=(f.dataHora||'').slice(0,10);if(fDtIni&&d<fDtIni)return false;if(fDtFim&&d>fDtFim)return false;}
+    if(fDtIni&&d<fDtIni)return false;
+    if(fDtFim&&d>fDtFim)return false;
     return true;
   }).sort(function(a,b){return(b.criadoEm||b.dataHora||'').localeCompare(a.criadoEm||a.dataHora||'');});
 }
@@ -4358,6 +5035,17 @@ window.ftGerAdicionarHorario=function(){
   if(FT_HORARIOS.some(function(h){return h.toLowerCase()===val.toLowerCase();})){ftToast('⚠️ Horário já existe.','warn');return;}
   FT_HORARIOS.push(val);ftSalvarHorarios();inp.value='';ftGerRenderHorarios();ftToast('✅ Horário adicionado!','success');
 };
+window.ftGerAdicionarHorarioTop=function(){
+  var inp=document.getElementById('ft-ger-horario-input-top');
+  var val=(inp?inp.value||'':'').trim();
+  if(!val){ftToast('⚠️ Digite o horário. Ex: 08:00 – 17:00','warn');return;}
+  if(FT_HORARIOS.some(function(h){return h.toLowerCase()===val.toLowerCase();})){ftToast('⚠️ Horário já existe.','warn');return;}
+  FT_HORARIOS.push(val);
+  ftSalvarHorarios();
+  if(inp)inp.value='';
+  ftGerRenderHorarios();
+  ftToast('✅ Horário "'+val+'" adicionado!','success');
+};
 window.ftGerRemoverHorario=function(idx){
   var item=FT_HORARIOS[idx];
   if(!item)return;
@@ -4390,9 +5078,11 @@ window.ftRecuperarDoHistorico=function(){
   if(!regs.length){
     ftToast('⚠️ Nenhum registro de ponto encontrado.','warn');return;
   }
-  // Filtra apenas entradas sem FT gerada
+  // Filtra apenas entradas a partir da data inicial e sem FT gerada
   var pendentes=regs.filter(function(r){
-    return r.tipo==='entrada'&&!ftS.ftsLocal.some(function(f){return f.pontoId===r.id;});
+    return r.tipo==='entrada'&&ftDentroPeriodoFT(ftDataDoRegistro(r))
+      &&!ftS.ftsLocal.some(function(f){return f.pontoId===r.id;})
+      &&!ftS.ftFirestore.some(function(f){return f._pontoId===r.id||f.pontoId===r.id;});
   });
   if(!pendentes.length){
     ftToast('✅ Todos os registros já possuem FT gerada.','success');return;
@@ -4424,7 +5114,18 @@ window.ftRecuperarDoHistorico=function(){
 };
 
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',ftInit):ftInit();
-window.addEventListener('firebaseReady',function(){if(ftS.dbFT)ftSyncFirestore();});
+window.addEventListener('firebaseReady',function(){
+  // Se dbFT ainda não está pronto, reconecta primeiro; depois sincroniza
+  if(!ftS.dbFT){ftConectar();}
+  else{ftSyncFirestore();}
+});
+
+// ── Expõe funções de exportação no escopo global ──────────────────────────────
+window.ftvGetListaFiltrada = ftvGetListaFiltrada;
+window.ftvFormatarDataHora = ftvFormatarDataHora;
+window.ftvFormatarBRL      = ftvFormatarBRL;
+window.ftvExportarPDF      = ftvExportarPDF;
+window.ftvExportarExcel    = ftvExportarExcel;
 })();
 // ─── EXPORTAR HISTÓRICO EXCEL (CSV) ───────────────────────────────────────────
 function exportarHistoricoExcel() {
@@ -4497,8 +5198,25 @@ function confirmarDelRegistro(nome, dateKey) {
 function confirmarDelRegistroOk() {
   if (!_delRegIds.length) return;
   const idSet = new Set(_delRegIds);
+  const idsParaRemover = [..._delRegIds];
+
+  // Remove da memória
   registros = registros.filter(r => !idSet.has(r.id));
-  saveRegistros();
+
+  // Salva no localStorage
+  localStorage.setItem('ms_registros', JSON.stringify(registros));
+
+  // Remove individualmente no Firebase (não sobrescreve toda a coleção)
+  if (window._firebaseReady && window._db) {
+    _syncStart();
+    const ops = idsParaRemover.map(id =>
+      window._fbRemove(window._fbRef(window._db, 'registros/' + id))
+    );
+    Promise.all(ops)
+      .then(_syncDone)
+      .catch(e => { _syncErr(); console.warn('delRegistro Firebase:', e.message); });
+  }
+
   _delRegIds = [];
   document.getElementById('del-reg-overlay').style.display = 'none';
   renderHistorico();
@@ -4629,6 +5347,111 @@ function exportarCredenciais() {
   ].join('\n');
 
   navigator.clipboard.writeText(texto).catch(() => {});
+}
+
+// ── Exportar cadastros completos em PDF ─────────────────────────────────────
+function exportarCadastrosPDF() {
+  if (currentUser?.role !== 'admin') { alert('Acesso restrito a administradores.'); return; }
+
+  const dataHoje = new Date().toLocaleDateString('pt-BR');
+  const total    = colaboradores.filter(c => c.ativo !== false).length;
+  const inativos = colaboradores.filter(c => c.ativo === false).length;
+
+  const cards = colaboradores
+    .slice()
+    .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
+    .map((c, i) => {
+      const user  = usuarios.find(u => u.colaboradorId === c.id);
+      const ativo = c.ativo !== false;
+      const idxLabel = String(i + 1).padStart(2, '0');
+
+      const linhas = [
+        c.posto       ? `<tr><td>📍 Posto</td><td>${c.posto}</td></tr>` : '',
+        c.rg          ? `<tr><td>🪪 RG</td><td>${c.rg}</td></tr>` : '',
+        c.cpf         ? `<tr><td>📋 CPF</td><td>${c.cpf}</td></tr>` : '',
+        c.dataNasc    ? `<tr><td>🎂 Nascimento</td><td>${new Date(c.dataNasc+'T12:00:00').toLocaleDateString('pt-BR')}</td></tr>` : '',
+        c.estadoCivil ? `<tr><td>💍 Est. Civil</td><td>${c.estadoCivil}</td></tr>` : '',
+        c.telefone    ? `<tr><td>📞 Telefone</td><td>${c.telefone}</td></tr>` : '',
+        c.email       ? `<tr><td>✉️ E-mail</td><td>${c.email}</td></tr>` : '',
+        c.endereco    ? `<tr><td>🏠 Endereço</td><td>${c.endereco}</td></tr>` : '',
+        user          ? `<tr><td>👤 Login</td><td style="font-family:monospace;color:#0369a1">${user.login}</td></tr>` : '',
+        user?.role    ? `<tr><td>🛡️ Perfil</td><td>${user.role === 'admin' ? 'Administrador' : 'Colaborador'}</td></tr>` : '',
+      ].filter(Boolean).join('');
+
+      return `
+      <div class="card" style="page-break-inside:avoid">
+        <div class="card-header" style="background:${ativo ? '#0f172a' : '#78716c'}">
+          <div class="card-num">${idxLabel}</div>
+          <div>
+            <div class="card-nome">${c.nome}</div>
+            <div class="card-sub">${c.posto || 'Sem posto definido'}</div>
+          </div>
+          <div class="card-badge" style="background:${ativo ? '#16a34a22' : '#9ca3af22'};border-color:${ativo ? '#16a34a55' : '#9ca3af55'};color:${ativo ? '#16a34a' : '#9ca3af'}">
+            ${ativo ? '✅ Ativo' : '⛔ Inativo'}
+          </div>
+        </div>
+        ${linhas ? `<table class="info-table">${linhas}</table>` : '<p class="sem-dados">Sem informações adicionais cadastradas.</p>'}
+      </div>`;
+    }).join('');
+
+  const html = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Colaboradores — Grupo M.S — ${dataHoje}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f1f5f9; color: #1e293b; padding: 28px; font-size: 13px; }
+    .page-header { background: #0f172a; color: #fff; border-radius: 12px; padding: 22px 28px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .page-header h1 { font-size: 20px; font-weight: 700; }
+    .page-header h2 { font-size: 12px; color: #94a3b8; margin-top: 4px; font-weight: 400; }
+    .page-header .totais { text-align: right; font-size: 12px; color: #94a3b8; line-height: 1.8; }
+    .page-header .totais strong { color: #e2e8f0; font-size: 14px; }
+    .btn-print { display: block; margin: 0 0 24px; padding: 10px 24px; background: #0f172a; color: #fff; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; font-weight: 600; }
+    .btn-print:hover { background: #1e293b; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+    .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+    .card-header { display: flex; align-items: center; gap: 14px; padding: 14px 16px; color: #fff; }
+    .card-num { background: rgba(255,255,255,.15); border-radius: 8px; padding: 4px 10px; font-size: 11px; font-family: monospace; font-weight: 700; white-space: nowrap; }
+    .card-nome { font-size: 15px; font-weight: 700; }
+    .card-sub { font-size: 11px; color: #cbd5e1; margin-top: 2px; }
+    .card-badge { margin-left: auto; border: 1px solid; border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table td { padding: 7px 14px; border-bottom: 1px solid #f1f5f9; font-size: 12px; vertical-align: top; }
+    .info-table td:first-child { color: #64748b; white-space: nowrap; width: 110px; font-weight: 600; }
+    .info-table tr:last-child td { border-bottom: none; }
+    .sem-dados { padding: 12px 16px; color: #94a3b8; font-size: 12px; font-style: italic; }
+    .footer { margin-top: 32px; text-align: center; color: #94a3b8; font-size: 11px; border-top: 1px solid #e2e8f0; padding-top: 16px; }
+    @media print {
+      body { background: #fff; padding: 12px; }
+      .btn-print { display: none !important; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .page-header { border-radius: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <div>
+      <h1>👥 Cadastro de Colaboradores</h1>
+      <h2>Grupo M.S &nbsp;·&nbsp; Gerado em ${dataHoje}</h2>
+    </div>
+    <div class="totais">
+      <strong>${total}</strong> ativos<br>
+      ${inativos > 0 ? `<span>${inativos} inativos</span>` : ''}
+    </div>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Salvar como PDF</button>
+  <div class="cards-grid">
+    ${cards}
+  </div>
+  <div class="footer">Grupo M.S — Sistema de Ponto · ${dataHoje} · Total: ${total + inativos} colaboradores</div>
+</body>
+</html>`;
+
+  const blob = new Blob([html], { type: 'text/html' });
+  const url  = URL.createObjectURL(blob);
+  window.open(url, '_blank');
 }
 
 // Versão silenciosa do reparo — roda automaticamente ao carregar
@@ -6002,6 +6825,7 @@ mostrarSetupSeNecessario();
   setTimeout(iniciar, 4000);
 })();
 </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
